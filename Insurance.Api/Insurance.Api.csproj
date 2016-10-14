@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6AE2843-512F-4381-820D-0A8CFEAB7CCB}</ProjectGuid>
+    <ProjectGuid>{F16D300C-D001-4060-AF7D-CF551E590090}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Security.Api</RootNamespace>
-    <AssemblyName>Security.Api</AssemblyName>
+    <RootNamespace>Insurance.Api</RootNamespace>
+    <AssemblyName>Insurance.Api</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -199,8 +199,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\AuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +212,40 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Broker.Service\Broker.Service.csproj">
+      <Project>{669eca61-c9ea-4dab-9483-dc67a20f599e}</Project>
+      <Name>Broker.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Service\Customer.Service.csproj">
+      <Project>{5d570fba-7f7a-44a0-8721-0e9383bd126c}</Project>
+      <Name>Customer.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estimate.Service\Estimate.Service.csproj">
+      <Project>{7bf0324c-4587-4bbf-bc09-c6d159bff9cd}</Project>
+      <Name>Estimate.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fipe.Service\Fipe.Service.csproj">
+      <Project>{e0a9cb72-9b1c-495b-8e2e-897097d11c33}</Project>
+      <Name>Fipe.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Insurance.Common\Insurance.Common.csproj">
+      <Project>{1896a0dc-9909-4ee8-b422-7a567479c51e}</Project>
+      <Name>Insurance.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quotation.Service\Quotation.Service.csproj">
+      <Project>{fe337703-005d-47ce-8e9b-7cd66fc744c2}</Project>
+      <Name>Quotation.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security.Service\Security.Service.csproj">
+      <Project>{72e19807-de01-4e86-98f9-f5ff77edd397}</Project>
+      <Name>Security.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Signature.Service\Signature.Service.csproj">
+      <Project>{4ec0eea9-2cb6-4b42-98b9-d6a01cd27a59}</Project>
+      <Name>Signature.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -232,9 +265,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63327</DevelopmentServerPort>
+          <DevelopmentServerPort>60747</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63327/</IISUrl>
+          <IISUrl>http://localhost:60747/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
