@@ -62,6 +62,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.pt-BR.resx</DependentUpon>
     </Compile>
+    <Compile Include="Validation\AssertionConcern.cs" />
+    <Compile Include="Validation\PasswordValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Errors.pt-BR.resx">

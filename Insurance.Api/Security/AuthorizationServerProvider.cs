@@ -5,15 +5,15 @@ using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using Insurance.Common.Resources;
-
+using Insurance.Domain.Services;
 
 namespace Insurance.Api.Security
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        private readonly IUserService _service;
+        private readonly ISecurityService _service;
 
-        public AuthorizationServerProvider(IUserService service)
+        public AuthorizationServerProvider(ISecurityService service)
         {
             _service = service;
         }
@@ -41,7 +41,7 @@ namespace Insurance.Api.Security
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.Email));
-                identity.AddClaim(new Claim(ClaimTypes.GivenName, user.Name));
+                //identity.AddClaim(new Claim(ClaimTypes.GivenName, user.Name));
 
                 GenericPrincipal principal = new GenericPrincipal(identity, null);
                 Thread.CurrentPrincipal = principal;
