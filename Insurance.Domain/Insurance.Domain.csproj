@@ -40,8 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerators\CalculatingIntegrationStatusType.cs" />
+    <Compile Include="Enumerators\EstimateStatusType.cs" />
+    <Compile Include="Enumerators\QuotationStatusType.cs" />
+    <Compile Include="Models\Broker.cs" />
+    <Compile Include="Models\BrokerInsurance.cs" />
+    <Compile Include="Models\BrokerParameter.cs" />
+    <Compile Include="Models\BrokerPlan.cs" />
+    <Compile Include="Models\BrokerUser.cs" />
+    <Compile Include="Models\CalculateIntegration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerUser.cs" />
+    <Compile Include="Models\Estimate.cs" />
+    <Compile Include="Models\EstimateFeedback.cs" />
+    <Compile Include="Models\EstimateRevision.cs" />
+    <Compile Include="Models\FeedbackReason.cs" />
+    <Compile Include="Models\Insurance.cs" />
+    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\Quotation.cs" />
+    <Compile Include="Models\QuotationBroker.cs" />
+    <Compile Include="Models\QuotationBrokerParameter.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,7 +73,12 @@
     <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Services\IStateService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Insurance.Common\Insurance.Common.csproj">
+      <Project>{1896a0dc-9909-4ee8-b422-7a567479c51e}</Project>
+      <Name>Insurance.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
