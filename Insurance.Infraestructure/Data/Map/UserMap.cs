@@ -1,4 +1,7 @@
 ﻿using Insurance.Domain.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Insurance.Infraestructure.Data.Map
 {
@@ -8,12 +11,12 @@ namespace Insurance.Infraestructure.Data.Map
         {
             ToTable("User");
 
-            Property(x => x.Id)
+            Property(x => x.UserId)
                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            Property(x => x.Name)
-                .HasMaxLength(60)
-                .IsRequired();
+            //Property(x => x.Name)
+            //    .HasMaxLength(60)
+            //    .IsRequired();
 
             Property(x => x.Email)
                 .HasMaxLength(160)

@@ -237,6 +237,10 @@
       <Project>{28f6d39d-b40a-4a5a-910f-46cb81e97390}</Project>
       <Name>Insurance.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Insurance.Infraestructure\Insurance.Infraestructure.csproj">
+      <Project>{a48b8526-1abb-4ff5-92a9-c72fc5149aa9}</Project>
+      <Name>Insurance.Infraestructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quotation.Service\Quotation.Service.csproj">
       <Project>{fe337703-005d-47ce-8e9b-7cd66fc744c2}</Project>
       <Name>Quotation.Service</Name>

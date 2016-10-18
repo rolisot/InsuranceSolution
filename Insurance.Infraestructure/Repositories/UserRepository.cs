@@ -23,12 +23,12 @@ namespace Insurance.Infraestructure.Repositories
 
         public User Get(Guid id)
         {
-            return _context.Users.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Users.Where(x => x.UserId == id).FirstOrDefault();
         }
 
         public List<User> Get(int skip, int take)
         {
-            return _context.Users.OrderBy(x => x.Name).Skip(skip).Take(take).ToList();
+            return _context.Users.OrderBy(x => x.Email).Skip(skip).Take(take).ToList();
         }
 
         public void Create(User user)

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Insurance.Domain.Models;
+using Insurance.Infraestructure.Data.Map;
+using System.Data.Entity;
 
 namespace Insurance.Infraestructure.Data
 {

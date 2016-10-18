@@ -1,4 +1,6 @@
 ﻿using Insurance.Domain.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Insurance.Infraestructure.Data.Map
 {
