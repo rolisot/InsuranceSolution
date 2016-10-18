@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Infraestructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Signature.Service", "Signature.Service\Signature.Service.csproj", "{4EC0EEA9-2CB6-4B42-98B9-D6A01CD27A59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Startup", "Insurance.Startup\Insurance.Startup.csproj", "{BD9A29C8-D63C-4A0B-BEB2-57DEB9D6C0E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Service", "User.Service\User.Service.csproj", "{580C7430-1D27-4815-8A89-B0E2C1AE3193}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{4EC0EEA9-2CB6-4B42-98B9-D6A01CD27A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC0EEA9-2CB6-4B42-98B9-D6A01CD27A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC0EEA9-2CB6-4B42-98B9-D6A01CD27A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD9A29C8-D63C-4A0B-BEB2-57DEB9D6C0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9A29C8-D63C-4A0B-BEB2-57DEB9D6C0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9A29C8-D63C-4A0B-BEB2-57DEB9D6C0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9A29C8-D63C-4A0B-BEB2-57DEB9D6C0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580C7430-1D27-4815-8A89-B0E2C1AE3193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580C7430-1D27-4815-8A89-B0E2C1AE3193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580C7430-1D27-4815-8A89-B0E2C1AE3193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580C7430-1D27-4815-8A89-B0E2C1AE3193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

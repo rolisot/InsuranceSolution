@@ -62,9 +62,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Insurance.Common\Insurance.Common.csproj">
       <Project>{1896A0DC-9909-4EE8-B422-7A567479C51E}</Project>
