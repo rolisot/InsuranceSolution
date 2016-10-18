@@ -129,4 +129,7 @@
   <data name="ResetPasswordEmailBody" xml:space="preserve">
     <value>Your new password is {0}</value>
   </data>
+  <data name="UserSuccessfulyRegistered" xml:space="preserve">
+    <value>User successfuly registered.</value>
+  </data>
 </root>

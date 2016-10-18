@@ -11,23 +11,29 @@ namespace Insurance.Infraestructure.Data.Map
         {
             ToTable("User");
 
-            Property(x => x.UserId)
-               .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
-            //Property(x => x.Name)
-            //    .HasMaxLength(60)
-            //    .IsRequired();
+            HasKey(x => x.UserId);
 
             Property(x => x.Email)
                 .HasMaxLength(160)
                 .HasColumnAnnotation(
                     IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_EMAIL", 1) { IsUnique = true }))
+                    new IndexAnnotation(new IndexAttribute("IX_USER_EMAIL", 1) { IsUnique = true }))
                 .IsRequired();
 
             Property(x => x.Password)
                 .HasMaxLength(32)
-                .IsFixedLength();
+                .IsFixedLength()
+                .IsRequired();
+
+            Property(x => x.Active)
+                .IsRequired();
+
+            Property(x => x.LastAccessDate)
+               .IsRequired();
+
+            Property(x => x.RegisterDate)
+               .IsRequired();
+
         }
     }
 }

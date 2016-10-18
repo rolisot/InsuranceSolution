@@ -1,6 +1,6 @@
 ﻿namespace Insurance.Domain.Models
 {
-    public class CustomerUser : User
+    public class CustomerUser
     {
     }
 }

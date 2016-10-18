@@ -3,6 +3,7 @@ using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Insurance.Infraestructure.Repositories
 {
@@ -13,6 +14,11 @@ namespace Insurance.Infraestructure.Repositories
         public CityRepository(AppDataContext context)
         {
             this._context = context;
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
 
         public List<City> GetAll(int stateId)

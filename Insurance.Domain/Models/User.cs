@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Insurance.Common.Resources;
+using Insurance.Common.Validation;
+using System;
 
 namespace Insurance.Domain.Models
 {
@@ -6,7 +8,7 @@ namespace Insurance.Domain.Models
     {
         #region Constructor
         protected User() { }
-        public User(string name, string email)
+        public User(string email)
         {
             this.UserId = Guid.NewGuid();
             this.Email = email;
@@ -26,15 +28,15 @@ namespace Insurance.Domain.Models
         #endregion
 
         #region Methods
-        //public void SetPassword(string password, string confirmPassword)
-        //{
-        //    AssertionConcern.AssertArgumentNotNull(password, Errors.InvalidUserPassword);
-        //    AssertionConcern.AssertArgumentNotNull(confirmPassword, Errors.InvalidUserPassword);
-        //    AssertionConcern.AssertArgumentLength(password, 6, 20, Errors.InvalidUserPassword);
-        //    AssertionConcern.AssertArgumentEquals(password, confirmPassword, Errors.PasswordDoesNotMatch);
+        public void SetPassword(string password, string confirmPassword)
+        {
+            AssertionConcern.AssertArgumentNotNull(password, Errors.InvalidUserPassword);
+            AssertionConcern.AssertArgumentNotNull(confirmPassword, Errors.InvalidUserPassword);
+            AssertionConcern.AssertArgumentLength(password, 6, 20, Errors.InvalidUserPassword);
+            AssertionConcern.AssertArgumentEquals(password, confirmPassword, Errors.PasswordDoesNotMatch);
 
-        //    this.Password = PasswordAssertionConcern.Encrypt(password);
-        //}
+            this.Password = PasswordValidation.Encrypt(password);
+        }
 
         //public string ResetPassword()
         //{
@@ -48,12 +50,12 @@ namespace Insurance.Domain.Models
         //{
         //    this.Name = name;
         //}
-        //public void Validate()
-        //{
-        //    AssertionConcern.AssertArgumentLength(this.Name, 3, 250, Errors.InvalidUserName);
-        //    EmailAssertionConcern.AssertIsValid(this.Email);
-        //    PasswordAssertionConcern.AssertIsValid(this.Password);
-        //}
+        public void Validate()
+        {
+            AssertionConcern.AssertArgumentLength(this.Email, 3, 160, Errors.InvalidUserName);
+            EmailValidation.AssertIsValid(this.Email);
+            PasswordValidation.AssertIsValid(this.Password);
+        }
 
         #endregion
     }

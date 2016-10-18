@@ -1,11 +1,13 @@
-﻿using Insurance.Domain.Models;
+﻿using Customers.Service.Services;
+using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using Insurance.Infraestructure.Data;
 using Insurance.Infraestructure.Repositories;
+using InsuranceService.Services;
 using Microsoft.Practices.Unity;
 using Security.Service.Services;
-using User.Service.Services;
+using UsersService.Services;
 
 namespace Insurance.Startup
 {
@@ -18,7 +20,6 @@ namespace Insurance.Startup
             container.RegisterType<ISecurityService, SecurityService>(new HierarchicalLifetimeManager());
             container.RegisterType<User, User>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<AppDataContext, AppDataContext>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<User, User>(new HierarchicalLifetimeManager());

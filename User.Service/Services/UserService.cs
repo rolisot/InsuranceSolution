@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Insurance.Domain.Repositories;
 using Insurance.Common.Resources;
 
-namespace User.Service.Services
+namespace UsersService.Services
 {
     public class UserService : IUserService
     {
@@ -26,14 +26,22 @@ namespace User.Service.Services
             throw new NotImplementedException();
         }
 
-        public List<Insurance.Domain.Models.User> GetByRange(int skip, int take)
+        public List<User> GetByRange(int skip, int take)
         {
             throw new NotImplementedException();
         }
 
-        public void Register(string name, string email, string password, string confirmPassword)
+        public void Create(string email, string password, string confirmPassword)
         {
-            throw new NotImplementedException();
+            var hasUser = _repository.Get(email);
+            if (hasUser != null)
+                throw new Exception(Errors.DuplicateEmail);
+
+            var user = new User(email);
+            user.SetPassword(password, confirmPassword);
+            user.Validate();
+
+            _repository.Create(user);
         }
 
         public string ResetPassword(string email)
@@ -41,7 +49,7 @@ namespace User.Service.Services
             throw new NotImplementedException();
         }
 
-        public Insurance.Domain.Models.User GetByEmail(string email)
+        public User GetByEmail(string email)
         {
             var user = _repository.Get(email);
             if (user == null)

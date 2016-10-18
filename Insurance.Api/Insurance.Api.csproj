@@ -77,14 +77,38 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -199,8 +223,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CitiesController.cs" />
+    <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Helpers\UnityResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\AuthorizationServerProvider.cs" />
+    <Compile Include="Contracts\CreateUserContract.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -213,17 +242,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Broker.Service\Broker.Service.csproj">
+    <ProjectReference Include="..\Broker.Service\Brokers.Service.csproj">
       <Project>{669eca61-c9ea-4dab-9483-dc67a20f599e}</Project>
-      <Name>Broker.Service</Name>
+      <Name>Brokers.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Customer.Service\Customer.Service.csproj">
+    <ProjectReference Include="..\Customer.Service\Customers.Service.csproj">
       <Project>{5d570fba-7f7a-44a0-8721-0e9383bd126c}</Project>
-      <Name>Customer.Service</Name>
+      <Name>Customers.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Estimate.Service\Estimate.Service.csproj">
+    <ProjectReference Include="..\Estimate.Service\Estimates.Service.csproj">
       <Project>{7bf0324c-4587-4bbf-bc09-c6d159bff9cd}</Project>
-      <Name>Estimate.Service</Name>
+      <Name>Estimates.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fipe.Service\Fipe.Service.csproj">
       <Project>{e0a9cb72-9b1c-495b-8e2e-897097d11c33}</Project>
@@ -241,9 +270,17 @@
       <Project>{a48b8526-1abb-4ff5-92a9-c72fc5149aa9}</Project>
       <Name>Insurance.Infraestructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quotation.Service\Quotation.Service.csproj">
+    <ProjectReference Include="..\Insurance.Startup\Insurance.Startup.csproj">
+      <Project>{bd9a29c8-d63c-4a0b-beb2-57deb9d6c0e4}</Project>
+      <Name>Insurance.Startup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InsuranceService\InsuranceService.csproj">
+      <Project>{1234a8b7-afb7-4076-b4b8-deae592dfb8e}</Project>
+      <Name>InsuranceService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quotation.Service\Quotations.Service.csproj">
       <Project>{fe337703-005d-47ce-8e9b-7cd66fc744c2}</Project>
-      <Name>Quotation.Service</Name>
+      <Name>Quotations.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.Service\Security.Service.csproj">
       <Project>{72e19807-de01-4e86-98f9-f5ff77edd397}</Project>
@@ -253,10 +290,15 @@
       <Project>{4ec0eea9-2cb6-4b42-98b9-d6a01cd27a59}</Project>
       <Name>Signature.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\User.Service\UsersService.csproj">
+      <Project>{580c7430-1d27-4815-8a89-b0e2c1ae3193}</Project>
+      <Name>UsersService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

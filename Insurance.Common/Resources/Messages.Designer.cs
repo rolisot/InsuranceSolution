@@ -95,5 +95,14 @@ namespace Insurance.Common.Resources {
                 return ResourceManager.GetString("ResetPasswordEmailBody", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User successfuly registered..
+        /// </summary>
+        public static string UserSuccessfulyRegistered {
+            get {
+                return ResourceManager.GetString("UserSuccessfulyRegistered", resourceCulture);
+            }
+        }
     }
 }

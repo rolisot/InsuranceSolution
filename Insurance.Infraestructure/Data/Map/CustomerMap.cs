@@ -10,8 +10,7 @@ namespace Insurance.Infraestructure.Data.Map
         {
             ToTable("Customer");
 
-            Property(x => x.CustomerId)
-               .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            HasKey(x => x.CustomerId);
 
             //Property(x => x.Name)
             //    .HasMaxLength(60)

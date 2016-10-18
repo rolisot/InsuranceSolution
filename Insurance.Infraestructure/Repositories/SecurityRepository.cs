@@ -1,7 +1,6 @@
 ﻿using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
-using System;
 using System.Linq;
 
 namespace Insurance.Infraestructure.Repositories
