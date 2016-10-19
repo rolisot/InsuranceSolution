@@ -10,7 +10,6 @@ using System.Web.Http.Cors;
 namespace Insurance.Api.Controllers
 {
     [EnableCors(origins:"*", headers:"*", methods:"*")]
-    [Authorize]
     [RoutePrefix("api/states")]
     public class StatesController : ApiController
     {

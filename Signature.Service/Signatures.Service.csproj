@@ -7,8 +7,8 @@
     <ProjectGuid>{4EC0EEA9-2CB6-4B42-98B9-D6A01CD27A59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Signature.Service</RootNamespace>
-    <AssemblyName>Signature.Service</AssemblyName>
+    <RootNamespace>Signatures.Service</RootNamespace>
+    <AssemblyName>Signatures.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

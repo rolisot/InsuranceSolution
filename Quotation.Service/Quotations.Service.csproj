@@ -7,8 +7,8 @@
     <ProjectGuid>{FE337703-005D-47CE-8E9B-7CD66FC744C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quotation.Service</RootNamespace>
-    <AssemblyName>Quotation.Service</AssemblyName>
+    <RootNamespace>Quotations.Service</RootNamespace>
+    <AssemblyName>Quotations.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{669ECA61-C9EA-4DAB-9483-DC67A20F599E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Broker.Service</RootNamespace>
-    <AssemblyName>Broker.Service</AssemblyName>
+    <RootNamespace>Brokers.Service</RootNamespace>
+    <AssemblyName>Brokers.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

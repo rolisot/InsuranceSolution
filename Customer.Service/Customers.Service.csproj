@@ -7,8 +7,8 @@
     <ProjectGuid>{5D570FBA-7F7A-44A0-8721-0E9383BD126C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Customer.Service</RootNamespace>
-    <AssemblyName>Customer.Service</AssemblyName>
+    <RootNamespace>Customers.Service</RootNamespace>
+    <AssemblyName>Customers.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
