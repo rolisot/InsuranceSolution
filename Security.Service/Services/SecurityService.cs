@@ -23,6 +23,9 @@ namespace Security.Service.Services
             if (user.Password != PasswordValidation.Encrypt(password))
                 throw new Exception(Errors.InvalidCredentials);
 
+            user.SetLastAccessDate();
+            this._repository.Update(user);
+
             return user;
         }
 

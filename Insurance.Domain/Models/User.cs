@@ -38,6 +38,11 @@ namespace Insurance.Domain.Models
             this.Password = PasswordValidation.Encrypt(password);
         }
 
+        public void SetLastAccessDate()
+        {
+            this.LastAccessDate = DateTime.Now;
+        }
+
         //public string ResetPassword()
         //{
         //    string password = Guid.NewGuid().ToString().Substring(0, 8);

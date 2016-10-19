@@ -23,5 +23,12 @@ namespace Insurance.Infraestructure.Repositories
         {
             return _context.Users.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
         }
+
+        public void Update(User user)
+        {
+            _context.Entry<User>(user).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+        }
+
     }
 }
