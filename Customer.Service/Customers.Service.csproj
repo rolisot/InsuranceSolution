@@ -63,10 +63,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Insurance.Common\Insurance.Common.csproj">
-      <Project>{1896a0dc-9909-4ee8-b422-7a567479c51e}</Project>
-      <Name>Insurance.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Insurance.Domain\Insurance.Domain.csproj">
       <Project>{28f6d39d-b40a-4a5a-910f-46cb81e97390}</Project>
       <Name>Insurance.Domain</Name>

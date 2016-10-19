@@ -56,7 +56,7 @@
     <Compile Include="Models\EstimateFeedback.cs" />
     <Compile Include="Models\EstimateRevision.cs" />
     <Compile Include="Models\FeedbackReason.cs" />
-    <Compile Include="Models\Insurance.cs" />
+    <Compile Include="Models\InsuranceCompany.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Quotation.cs" />
     <Compile Include="Models\QuotationBroker.cs" />
@@ -66,11 +66,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IInsuranceCompanyRepository.cs" />
     <Compile Include="Repositories\ISecurityRepository.cs" />
     <Compile Include="Repositories\IStateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\ICityService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
+    <Compile Include="Services\IInsuranceCompanyService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Services\IStateService.cs" />
     <Compile Include="Services\IUserService.cs" />

@@ -18,7 +18,7 @@ namespace Insurance.Startup
             container.RegisterType<AppDataContext, AppDataContext>(new HierarchicalLifetimeManager());
             container.RegisterType<ISecurityRepository, SecurityRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ISecurityService, SecurityService>(new HierarchicalLifetimeManager());
-            container.RegisterType<User, User>(new HierarchicalLifetimeManager());
+            //container.RegisterType<User, User>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
@@ -35,6 +35,10 @@ namespace Insurance.Startup
             container.RegisterType<ICityRepository, CityRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ICityService, CityService>(new HierarchicalLifetimeManager());
             container.RegisterType<City, City>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IInsuranceCompanyRepository, InsuranceCompanyRespository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IInsuranceCompanyService, InsuranceCompanyService>(new HierarchicalLifetimeManager());
+            container.RegisterType<InsuranceCompany, InsuranceCompany>(new HierarchicalLifetimeManager());
         }
     }
 }

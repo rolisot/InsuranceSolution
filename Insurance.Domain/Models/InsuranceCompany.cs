@@ -2,18 +2,18 @@
 
 namespace Insurance.Domain.Models
 {
-    public class Insurance
+    public class InsuranceCompany
     {
-        protected Insurance(){}
+        protected InsuranceCompany(){}
 
-        public Insurance(string name)
+        public InsuranceCompany(string name)
         {
             this.Name = name;
-            this.Active = true;
+            //this.Active = true;
         }
 
         public int InsuranceId { get; private set; }
         public string Name { get; private set; }
-        public Boolean Active { get; private set; }
+        //public Boolean Active { get; private set; }
     }
 }

@@ -63,21 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Broker.Service\Brokers.Service.csproj">
-      <Project>{669eca61-c9ea-4dab-9483-dc67a20f599e}</Project>
-      <Name>Brokers.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Customer.Service\Customers.Service.csproj">
       <Project>{5d570fba-7f7a-44a0-8721-0e9383bd126c}</Project>
       <Name>Customers.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Estimate.Service\Estimates.Service.csproj">
-      <Project>{7bf0324c-4587-4bbf-bc09-c6d159bff9cd}</Project>
-      <Name>Estimates.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fipe.Service\Fipe.Service.csproj">
-      <Project>{e0a9cb72-9b1c-495b-8e2e-897097d11c33}</Project>
-      <Name>Fipe.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Insurance.Domain\Insurance.Domain.csproj">
       <Project>{28f6d39d-b40a-4a5a-910f-46cb81e97390}</Project>
@@ -91,17 +79,9 @@
       <Project>{1234a8b7-afb7-4076-b4b8-deae592dfb8e}</Project>
       <Name>InsuranceService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quotation.Service\Quotations.Service.csproj">
-      <Project>{fe337703-005d-47ce-8e9b-7cd66fc744c2}</Project>
-      <Name>Quotations.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Security.Service\Security.Service.csproj">
       <Project>{72e19807-de01-4e86-98f9-f5ff77edd397}</Project>
       <Name>Security.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Signature.Service\Signatures.Service.csproj">
-      <Project>{4ec0eea9-2cb6-4b42-98b9-d6a01cd27a59}</Project>
-      <Name>Signatures.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\User.Service\UsersService.csproj">
       <Project>{580c7430-1d27-4815-8a89-b0e2c1ae3193}</Project>
