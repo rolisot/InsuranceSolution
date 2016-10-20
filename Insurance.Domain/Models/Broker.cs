@@ -6,10 +6,11 @@ namespace Insurance.Domain.Models
     {
         protected Broker() { }
                     
-        public Broker(string name, string cnpj)
+        public Broker(string name, string cnpj, City city)
         {
             this.Name = name;
             this.Cnpj = cnpj;
+            this.City = city;
             this.Active = true;
         }
 

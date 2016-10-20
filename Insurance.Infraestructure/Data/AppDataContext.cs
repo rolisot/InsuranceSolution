@@ -18,6 +18,7 @@ namespace Insurance.Infraestructure.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
         public DbSet<Plan> Plans { get; set; }
+        public DbSet<Broker> Brokers { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,6 +29,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new CityMap());
             modelBuilder.Configurations.Add(new InsuranceCompanyMap());
             modelBuilder.Configurations.Add(new PlanMap());
+            modelBuilder.Configurations.Add(new BrokerMap());
         }
     }
 }

@@ -63,6 +63,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Broker.Service\Brokers.Service.csproj">
+      <Project>{669eca61-c9ea-4dab-9483-dc67a20f599e}</Project>
+      <Name>Brokers.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Customer.Service\Customers.Service.csproj">
       <Project>{5d570fba-7f7a-44a0-8721-0e9383bd126c}</Project>
       <Name>Customers.Service</Name>

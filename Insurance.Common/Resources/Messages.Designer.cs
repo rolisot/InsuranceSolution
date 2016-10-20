@@ -61,6 +61,15 @@ namespace Insurance.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Broker successfuly registered..
+        /// </summary>
+        public static string BrokerSuccessfulyRegistered {
+            get {
+                return ResourceManager.GetString("BrokerSuccessfulyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer successfuly deleted..
         /// </summary>
         public static string CustomerSuccessfulyDeleted {

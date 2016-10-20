@@ -1,4 +1,5 @@
-﻿using Customers.Service.Services;
+﻿using Brokers.Service.Services;
+using Customers.Service.Services;
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
@@ -19,7 +20,6 @@ namespace Insurance.Startup
             container.RegisterType<AppDataContext, AppDataContext>(new HierarchicalLifetimeManager());
             container.RegisterType<ISecurityRepository, SecurityRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ISecurityService, SecurityService>(new HierarchicalLifetimeManager());
-            //container.RegisterType<User, User>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
@@ -44,6 +44,10 @@ namespace Insurance.Startup
             container.RegisterType<IPlanRepository, PlanRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IPlanService, PlanService>(new HierarchicalLifetimeManager());
             container.RegisterType<Plan, Plan>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IBrokerRepository, BrokerRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IBrokerService, BrokerService>(new HierarchicalLifetimeManager());
+            container.RegisterType<Broker, Broker>(new HierarchicalLifetimeManager());
         }
     }
 }

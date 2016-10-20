@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Insurance.Domain.Models
 {
@@ -10,5 +12,8 @@ namespace Insurance.Domain.Models
         public string Name { get; private set; }
         public Boolean Capital { get; private set; }
         public virtual State State { get; private set; }
+
+        [IgnoreDataMember]
+        public virtual ICollection<Broker> Brokers { get; set; }
     }
 }
