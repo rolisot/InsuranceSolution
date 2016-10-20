@@ -33,7 +33,6 @@ namespace Insurance.Api.Controllers
                 {
                     id = x.InsuranceId,
                     name = x.Name
-                    //active = x.Active
                 }));
             }
             catch (Exception ex)

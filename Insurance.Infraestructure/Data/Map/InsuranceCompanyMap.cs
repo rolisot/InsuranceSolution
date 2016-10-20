@@ -15,8 +15,8 @@ namespace Insurance.Infraestructure.Data.Map
                 .HasMaxLength(20)
                 .IsRequired();
 
-            //Property(x => x.Active)
-            //    .IsRequired();
+            Property(x => x.Active)
+                .IsRequired();
         }
     }
 }

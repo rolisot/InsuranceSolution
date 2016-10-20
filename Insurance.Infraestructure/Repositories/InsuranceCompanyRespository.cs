@@ -23,7 +23,7 @@ namespace Insurance.Infraestructure.Repositories
 
         public List<InsuranceCompany> GetAll()
         {
-            return _context.InsuranceCompanies.OrderBy(x => x.Name).ToList();
+            return _context.InsuranceCompanies.Where(x => x.Active == true).OrderBy(x => x.Name).ToList();
         }
 
         public InsuranceCompany GetById(int id)
