@@ -1,4 +1,5 @@
-﻿using Insurance.Domain.Models;
+﻿using Insurance.Domain.Contracts;
+using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System.Collections.Generic;
@@ -7,35 +8,47 @@ namespace Brokers.Service.Services
 {
     public class BrokerService : IBrokerService
     {
-        private IBrokerRepository repository;
+        private IBrokerRepository brokerRepository;
         private ICityRepository cityRepository;
+        private IInsuranceCompanyRepository insuranceRepository;
 
-        public BrokerService(IBrokerRepository context, ICityRepository cityContext)
+        public BrokerService(IBrokerRepository brokerContext, ICityRepository cityContext, IInsuranceCompanyRepository insuranceContext)
         {
-            this.repository = context;
+            this.brokerRepository = brokerContext;
             this.cityRepository = cityContext;
+            this.insuranceRepository = insuranceContext;
         }
 
-        public void Create(string name, string cnpj, int cityId)
+        public void Create(BrokerContract contract)
         {
-            var city = this.cityRepository.GetById(cityId);
-            var broker = new Broker(name, cnpj, city);
-            this.repository.Create(broker);
+            var city = this.cityRepository.GetById(contract.CityId);
+            var broker = new Broker(contract.Name, contract.Cnpj, city);
+            
+            broker.BrokerInsurance = new List<BrokerInsurance>();
+
+            foreach (BrokerInsuranceContract bi in contract.Insurances) {
+                var insurance = this.insuranceRepository.GetById(bi.InsuranceId);
+                broker.BrokerInsurance.Add(new BrokerInsurance(broker, insurance, bi.Login, bi.Password));
+            }
+
+            this.brokerRepository.Create(broker);
         }
 
         public void Dispose()
         {
-            this.repository.Dispose();
+            this.brokerRepository.Dispose();
+            this.cityRepository.Dispose();
+            this.insuranceRepository.Dispose();
         }
 
         public List<Broker> GetAll()
         {
-            return this.repository.GetAll();
+            return this.brokerRepository.GetAll();
         }
 
         public Broker GetById(int id)
         {
-            return this.repository.Get(id);
+            return this.brokerRepository.GetById(id);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace Insurance.Api.Contracts
+﻿namespace Insurance.Domain.Contracts
 {
-    public class CreatePlanContract
+    public class PlanContract
     {
         public string Description { get; set; }
         public decimal Price { get; set; }

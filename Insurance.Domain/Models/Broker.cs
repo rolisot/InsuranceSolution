@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Insurance.Domain.Models
 {
@@ -19,5 +20,8 @@ namespace Insurance.Domain.Models
         public string Cnpj { get; private set; }
         public Boolean Active { get; private set; }
         public virtual City City { get; set; }
+
+        public ICollection<BrokerInsurance> BrokerInsurance { get; set; }
+        public ICollection<BrokerPlan> BrokerPlan { get; set; }
     }
 }

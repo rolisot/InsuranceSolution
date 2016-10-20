@@ -6,7 +6,7 @@ namespace Insurance.Domain.Repositories
 {
     public interface IBrokerRepository : IDisposable
     {
-        Broker Get(int id);
+        Broker GetById(int id);
         List<Broker> GetAll();
         void Create(Broker broker);
         void Update(Broker broker);

@@ -1,4 +1,5 @@
-﻿using Insurance.Domain.Models;
+﻿using Insurance.Domain.Contracts;
+using Insurance.Domain.Models;
 using System;
 using System.Collections.Generic;
 
@@ -8,6 +9,6 @@ namespace Insurance.Domain.Services
     {
         Broker GetById(int id);
         List<Broker> GetAll();
-        void Create(string name, string cnpj, int cityId);
+        void Create(BrokerContract contract);
     }
 }

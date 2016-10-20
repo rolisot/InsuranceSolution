@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Insurance.Domain.Models
 {
@@ -15,5 +16,7 @@ namespace Insurance.Domain.Models
         public byte InsuranceId { get; private set; }
         public string Name { get; private set; }
         public Boolean Active { get; private set; }
+
+        public ICollection<BrokerInsurance> BrokerInsurance { get; set; }
     }
 }

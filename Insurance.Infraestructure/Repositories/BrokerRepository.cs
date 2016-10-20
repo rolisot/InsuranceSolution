@@ -32,7 +32,7 @@ namespace Insurance.Infraestructure.Repositories
             this.context.Dispose();
         }
 
-        public Broker Get(int id)
+        public Broker GetById(int id)
         {
             return context.Brokers.Include("City").Where(x => x.BrokerId == id).FirstOrDefault();
         }

@@ -31,6 +31,15 @@ namespace Insurance.Infraestructure.Data.Map
             HasOptional(x => x.City)
               .WithMany(x => x.Brokers)
               .Map(m => m.MapKey("CityId"));
+
+            //HasMany(x => x.Insurances)
+            //    .WithMany(y => y.Brokers)
+            //    .Map(mc =>
+            //    {
+            //        mc.ToTable("BrokerInsurance");
+            //        mc.MapLeftKey("BrokerId");
+            //        mc.MapRightKey("InsuranceId");
+            //    });
         }
     }
 }

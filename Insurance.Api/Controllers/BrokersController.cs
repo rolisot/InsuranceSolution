@@ -1,5 +1,5 @@
-﻿using Insurance.Api.Contracts;
-using Insurance.Common.Resources;
+﻿using Insurance.Common.Resources;
+using Insurance.Domain.Contracts;
 using Insurance.Domain.Services;
 using System;
 using System.Linq;
@@ -65,14 +65,14 @@ namespace Insurance.Api.Controllers
         [HttpPost]
         [Route("")]
         [Authorize]
-        public HttpResponseMessage Post(CreateBrokerContract contract)
+        public HttpResponseMessage Post(BrokerContract contract)
         {
             if (contract == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             try
             {
-                service.Create(contract.Name, contract.Cnpj, contract.CityId);
+                service.Create(contract);
                 return Request.CreateResponse(HttpStatusCode.OK, Messages.BrokerSuccessfulyRegistered);
             }
             catch (Exception ex)

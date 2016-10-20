@@ -13,7 +13,8 @@ namespace Insurance.Domain.Models
             this.SetDates();
         }
 
-        public int BrokerPlanId { get; private set; }
+        public int BrokerId { get; private set; }
+        public int PlanId { get; private set; }
         public virtual Broker Broker { get; set; }
         public virtual Plan Plan { get; set; }
         public DateTime BuyDate { get; private set; }

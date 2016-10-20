@@ -1,8 +1,8 @@
 ﻿using Insurance.Api.Contracts;
 using Insurance.Common.Resources;
+using Insurance.Domain.Contracts;
 using Insurance.Domain.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -66,14 +66,14 @@ namespace Insurance.Api.Controllers
         [HttpPost]
         [Route("")]
         [Authorize]
-        public HttpResponseMessage PostPlan(CreatePlanContract contract)
+        public HttpResponseMessage PostPlan(PlanContract contract)
         {
             if (contract == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             try
             {
-                service.Create(contract.Description, contract.Price, contract.Days);
+                service.Create(contract);
                 return Request.CreateResponse(HttpStatusCode.OK, Messages.PlanSuccessfulyRegistered);
             }
             catch (Exception ex)

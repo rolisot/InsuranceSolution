@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Insurance.Domain.Models
 {
@@ -19,5 +20,7 @@ namespace Insurance.Domain.Models
         public decimal Price { get; private set; }
         public int Days { get; private set; }
         public Boolean Active { get; private set; }
+
+        public ICollection<BrokerPlan> BrokerPlan { get; set; }
     }
 }
