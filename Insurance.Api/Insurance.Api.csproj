@@ -223,9 +223,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\CreatePlanContract.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\InsuranceCompanyController.cs" />
+    <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helpers\UnityResolver.cs" />

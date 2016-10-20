@@ -126,6 +126,9 @@
   <data name="PasswordSuccessfulyChanges" xml:space="preserve">
     <value>Sua senha foi alterada com sucesso.</value>
   </data>
+  <data name="PlanSuccessfulyRegistered" xml:space="preserve">
+    <value>Plano cadastrado com sucesso.</value>
+  </data>
   <data name="ResetPasswordEmailBody" xml:space="preserve">
     <value>Sua nova senha é {0}.</value>
   </data>

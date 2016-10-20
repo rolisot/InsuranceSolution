@@ -67,12 +67,14 @@
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IInsuranceCompanyRepository.cs" />
+    <Compile Include="Repositories\IPlanRepository.cs" />
     <Compile Include="Repositories\ISecurityRepository.cs" />
     <Compile Include="Repositories\IStateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\ICityService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IInsuranceCompanyService.cs" />
+    <Compile Include="Services\IPlanService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Services\IStateService.cs" />
     <Compile Include="Services\IUserService.cs" />

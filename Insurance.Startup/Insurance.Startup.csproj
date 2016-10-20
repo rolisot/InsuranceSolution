@@ -83,6 +83,10 @@
       <Project>{72e19807-de01-4e86-98f9-f5ff77edd397}</Project>
       <Name>Security.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Signature.Service\Signatures.Service.csproj">
+      <Project>{4ec0eea9-2cb6-4b42-98b9-d6a01cd27a59}</Project>
+      <Name>Signatures.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\User.Service\UsersService.csproj">
       <Project>{580c7430-1d27-4815-8a89-b0e2c1ae3193}</Project>
       <Name>UsersService</Name>

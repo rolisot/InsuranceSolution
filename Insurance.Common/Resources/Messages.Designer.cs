@@ -88,6 +88,15 @@ namespace Insurance.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plan successfuly registered..
+        /// </summary>
+        public static string PlanSuccessfulyRegistered {
+            get {
+                return ResourceManager.GetString("PlanSuccessfulyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your new password is {0}.
         /// </summary>
         public static string ResetPasswordEmailBody {

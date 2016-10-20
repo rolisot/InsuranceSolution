@@ -7,6 +7,7 @@ using Insurance.Infraestructure.Repositories;
 using InsuranceService.Services;
 using Microsoft.Practices.Unity;
 using Security.Service.Services;
+using Signatures.Service.Services;
 using UsersService.Services;
 
 namespace Insurance.Startup
@@ -39,6 +40,10 @@ namespace Insurance.Startup
             container.RegisterType<IInsuranceCompanyRepository, InsuranceCompanyRespository>(new HierarchicalLifetimeManager());
             container.RegisterType<IInsuranceCompanyService, InsuranceCompanyService>(new HierarchicalLifetimeManager());
             container.RegisterType<InsuranceCompany, InsuranceCompany>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IPlanRepository, PlanRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IPlanService, PlanService>(new HierarchicalLifetimeManager());
+            container.RegisterType<Plan, Plan>(new HierarchicalLifetimeManager());
         }
     }
 }

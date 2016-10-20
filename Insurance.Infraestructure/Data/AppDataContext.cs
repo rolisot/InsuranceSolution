@@ -17,6 +17,7 @@ namespace Insurance.Infraestructure.Data
         public DbSet<State> States { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
+        public DbSet<Plan> Plans { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,6 +27,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new StateMap());
             modelBuilder.Configurations.Add(new CityMap());
             modelBuilder.Configurations.Add(new InsuranceCompanyMap());
+            modelBuilder.Configurations.Add(new PlanMap());
         }
     }
 }

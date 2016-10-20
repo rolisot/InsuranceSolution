@@ -13,7 +13,7 @@ namespace Insurance.Infraestructure.Data.Map
             HasKey(x => x.CityId);
 
             Property(x => x.Name)
-                .HasMaxLength(38)
+                .HasMaxLength(40)
                 .IsRequired();
 
             //Property(x => x.StateId)

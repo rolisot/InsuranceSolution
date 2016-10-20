@@ -1,7 +1,6 @@
 ﻿using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,7 +27,7 @@ namespace Insurance.Infraestructure.Repositories
 
         public InsuranceCompany GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.InsuranceCompanies.Where(x => x.InsuranceId == id).FirstOrDefault();
         }
     }
 }

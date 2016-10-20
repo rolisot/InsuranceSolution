@@ -126,6 +126,9 @@
   <data name="PasswordSuccessfulyChanges" xml:space="preserve">
     <value>Your password was successfully changed.</value>
   </data>
+  <data name="PlanSuccessfulyRegistered" xml:space="preserve">
+    <value>Plan successfuly registered.</value>
+  </data>
   <data name="ResetPasswordEmailBody" xml:space="preserve">
     <value>Your new password is {0}</value>
   </data>
