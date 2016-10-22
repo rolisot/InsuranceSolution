@@ -1,4 +1,5 @@
-﻿using Insurance.Domain.Models;
+﻿using Insurance.Domain.Contracts;
+using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System;
@@ -8,57 +9,74 @@ namespace Customers.Service.Services
 {
     public class CustomerService : ICustomerService
     {
-        private ICustomerRepository _repository;
+        private ICustomerRepository customerRepository;
 
         public CustomerService(ICustomerRepository repository)
         {
-            this._repository = repository;
+            this.customerRepository = repository;
         }
-
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var customer = this.GetById(id);
+
+            if (customer != null)
+            {
+                this.customerRepository.Delete(customer);
+            }
         }
 
         public void Dispose()
         {
-            _repository.Dispose();
+            customerRepository.Dispose();
         }
 
         public List<Customer> GetAll()
         {
-            throw new NotImplementedException();
+            return this.customerRepository.GetAll();
         }
 
         public Customer GetByCpf(string cpf)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.GetByCpf(cpf);
         }
 
         public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.GetById(id);
         }
 
         public Customer GetByName(string name)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.GetByName(name);
         }
 
         public List<Customer> GetByRange(int skip, int take)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.Get(skip, take);
         }
 
-        public void Register(string name, string email, string cpf, string birthDate, string phone, int cityId)
+        public Customer GetByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            return this.customerRepository.GetByUserId(userId);
+        }
+
+        public void Create(CustomerContract contract)
+        {
+            var customer = new Customer(
+                Guid.Parse(contract.UserId), 
+                contract.Name, 
+                contract.Cpf, 
+                contract.Phone, 
+                contract.CityId, 
+                DateTime.Parse(contract.BirthDate));
+
+            this.customerRepository.Create(customer);
         }
 
         public void Update(Customer customer)
         {
-            throw new NotImplementedException();
+            this.customerRepository.Update(customer);
         }
     }
 }

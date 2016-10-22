@@ -1,4 +1,5 @@
-﻿using Insurance.Domain.Models;
+﻿using Insurance.Domain.Contracts;
+using Insurance.Domain.Models;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +10,8 @@ namespace Insurance.Domain.Services
         Customer GetById(int id);
         Customer GetByName(string name);
         Customer GetByCpf(string cpf);
-        void Register(string name, string email, string cpf, string birthDate, string phone, int cityId);
+        Customer GetByUserId(Guid userId);
+        void Create(CustomerContract contract);
         List<Customer> GetByRange(int skip, int take);
         List<Customer> GetAll();
         void Delete(int id);

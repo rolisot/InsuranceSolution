@@ -1,43 +1,84 @@
-﻿using Insurance.Domain.Repositories;
+﻿using Insurance.Domain.Models;
+using Insurance.Domain.Repositories;
+using Insurance.Infraestructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Insurance.Domain.Models;
 
 namespace Insurance.Infraestructure.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
+        private AppDataContext context;
+
+        public CustomerRepository(AppDataContext ctx)
+        {
+            this.context = ctx;
+        }
+
         public void Create(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Customers.Add(customer);
+            context.SaveChanges();
         }
 
         public void Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Customers.Remove(customer);
+            context.SaveChanges();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this.context.Dispose();
         }
 
-        public Customer Get(int id)
+        public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            return context.Customers
+               .Include("City")
+               .Where(x => x.CustomerId == id)
+               .FirstOrDefault();
         }
 
         public List<Customer> Get(int skip, int take)
         {
-            throw new NotImplementedException();
+            return context.Customers.OrderBy(x => x.Name).Skip(skip).Take(take).ToList();
+        }
+
+        public List<Customer> GetAll()
+        {
+            return context.Customers.Include("City").OrderBy(x => x.Name).ToList();
         }
 
         public void Update(Customer customer)
         {
-            throw new NotImplementedException();
+            context.Entry<Customer>(customer).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        public Customer GetByUserId(Guid id)
+        {
+            return context.Customers
+              .Include("City")
+              .Where(x => x.User.UserId == id)
+              .FirstOrDefault();
+        }
+
+        public Customer GetByCpf(string cpf)
+        {
+            return context.Customers
+              .Include("City")
+              .Where(x => x.Cpf == cpf)
+              .FirstOrDefault();
+        }
+
+        public Customer GetByName(string name)
+        {
+            return context.Customers
+              .Include("City")
+              .Where(x => x.Name == name)
+              .FirstOrDefault();
         }
     }
 }

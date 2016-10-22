@@ -9,7 +9,6 @@ namespace Insurance.Domain.Models
 
         public BrokerInsurance(Broker broker, InsuranceCompany insurance, string login, string password)
         {
-           
             this.Broker = broker;
             this.Insurance = insurance;
             this.Login = login;
