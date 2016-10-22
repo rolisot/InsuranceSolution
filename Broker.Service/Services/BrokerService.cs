@@ -3,6 +3,7 @@ using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System.Collections.Generic;
+using System;
 
 namespace Brokers.Service.Services
 {
@@ -44,6 +45,16 @@ namespace Brokers.Service.Services
             this.brokerRepository.Create(broker);
         }
 
+        public void Delete(int id)
+        {
+            var broker = this.GetById(id);
+
+            if (broker != null)
+            {
+                this.brokerRepository.Delete(broker);
+            }
+        }
+
         public void Dispose()
         {
             this.brokerRepository.Dispose();
@@ -56,9 +67,24 @@ namespace Brokers.Service.Services
             return this.brokerRepository.GetAll();
         }
 
+        public Broker GetByCnpj(string cnpj)
+        {
+            return this.brokerRepository.GetByCnpj(cnpj);
+        }
+
         public Broker GetById(int id)
         {
             return this.brokerRepository.GetById(id);
+        }
+
+        public Broker GetByName(string name)
+        {
+            return this.brokerRepository.GetByName(name);
+        }
+
+        public void Update(Broker broker)
+        {
+            this.brokerRepository.Update(broker);
         }
     }
 }

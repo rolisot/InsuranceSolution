@@ -3,6 +3,7 @@ using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Insurance.Infraestructure.Repositories
 {
@@ -53,6 +54,30 @@ namespace Insurance.Infraestructure.Repositories
         {
             context.Entry<Broker>(broker).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
+        }
+
+        public Broker GetByCnpj(string cnpj)
+        {
+            return context.Brokers
+                .Include("City")
+                .Include("BrokerParameter")
+                .Include("BrokerPlan")
+                .Include("BrokerInsurance")
+                .Include("BrokerInsurance.Insurance")
+                .Where(x => x.Cnpj == cnpj)
+                .FirstOrDefault();
+        }
+
+        public Broker GetByName(string name)
+        {
+            return context.Brokers
+                .Include("City")
+                .Include("BrokerParameter")
+                .Include("BrokerPlan")
+                .Include("BrokerInsurance")
+                .Include("BrokerInsurance.Insurance")
+                .Where(x => x.Name == name)
+                .FirstOrDefault();
         }
     }
 }
