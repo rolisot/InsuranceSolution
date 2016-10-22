@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Contracts\BrokerContract.cs" />
     <Compile Include="Contracts\BrokerInsuranceContract.cs" />
+    <Compile Include="Contracts\BrokerParameterContract.cs" />
     <Compile Include="Contracts\PlanContract.cs" />
     <Compile Include="Contracts\SignatureContract.cs" />
     <Compile Include="Enumerators\CalculatingIntegrationStatusType.cs" />

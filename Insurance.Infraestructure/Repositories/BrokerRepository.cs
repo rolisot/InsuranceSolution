@@ -34,7 +34,14 @@ namespace Insurance.Infraestructure.Repositories
 
         public Broker GetById(int id)
         {
-            return context.Brokers.Include("City").Where(x => x.BrokerId == id).FirstOrDefault();
+            return context.Brokers
+                .Include("City")
+                .Include("BrokerParameter")
+                .Include("BrokerPlan")
+                .Include("BrokerInsurance")
+                .Include("BrokerInsurance.Insurance")
+                .Where(x => x.BrokerId == id)
+                .FirstOrDefault();
         }
 
         public List<Broker> GetAll()

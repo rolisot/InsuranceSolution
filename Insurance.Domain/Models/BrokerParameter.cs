@@ -4,14 +4,14 @@
     {
         protected BrokerParameter(){}
 
-        public BrokerParameter(Broker broker, decimal comission)
+        public BrokerParameter(Broker broker, decimal commission)
         {
             this.Broker = broker;
-            this.Comission = comission;
+            this.Commission = commission;
         }
 
         public int BrokerParameterId { get; private set; }
-        public decimal Comission { get; private set; }
+        public decimal Commission { get; private set; }
         public virtual Broker Broker { get; set; }
     }
 }

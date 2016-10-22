@@ -8,5 +8,6 @@ namespace Insurance.Domain.Contracts
         public string Cnpj { get; set; }
         public int CityId { get; set; }
         public List<BrokerInsuranceContract> Insurances { get; set; }
+        public BrokerParameterContract Parameters { get; set; }
     }
 }

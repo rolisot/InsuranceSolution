@@ -52,6 +52,7 @@
     <Compile Include="Data\AppDataContext.cs" />
     <Compile Include="Data\Map\BrokerInsuranceMap.cs" />
     <Compile Include="Data\Map\BrokerMap.cs" />
+    <Compile Include="Data\Map\BrokerParameterMap.cs" />
     <Compile Include="Data\Map\BrokerPlanMap.cs" />
     <Compile Include="Data\Map\CityMap.cs" />
     <Compile Include="Data\Map\CustomerMap.cs" />

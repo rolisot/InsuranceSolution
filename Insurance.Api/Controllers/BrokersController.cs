@@ -10,6 +10,7 @@ using System.Web.Http;
 namespace Insurance.Api.Controllers
 {
     [RoutePrefix("api/brokers")]
+    [Authorize]
     public class BrokersController : ApiController
     {
         private IBrokerService service;
@@ -64,7 +65,6 @@ namespace Insurance.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        [Authorize]
         public HttpResponseMessage Post(BrokerContract contract)
         {
             if (contract == null)

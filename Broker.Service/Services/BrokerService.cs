@@ -24,11 +24,21 @@ namespace Brokers.Service.Services
             var city = this.cityRepository.GetById(contract.CityId);
             var broker = new Broker(contract.Name, contract.Cnpj, city);
             
-            broker.BrokerInsurance = new List<BrokerInsurance>();
+            if(contract.Parameters != null)
+            {
+                broker.BrokerParameter = new List<BrokerParameter>();
+                broker.BrokerParameter.Add(new BrokerParameter(broker, contract.Parameters.Commission));
+            }
 
-            foreach (BrokerInsuranceContract bi in contract.Insurances) {
-                var insurance = this.insuranceRepository.GetById(bi.InsuranceId);
-                broker.BrokerInsurance.Add(new BrokerInsurance(broker, insurance, bi.Login, bi.Password));
+            if (contract.Insurances != null && contract.Insurances.Count > 0)
+            {
+                broker.BrokerInsurance = new List<BrokerInsurance>();
+
+                foreach (BrokerInsuranceContract bi in contract.Insurances)
+                {
+                    var insurance = this.insuranceRepository.GetById(bi.InsuranceId);
+                    broker.BrokerInsurance.Add(new BrokerInsurance(broker, insurance, bi.Login, bi.Password));
+                }
             }
 
             this.brokerRepository.Create(broker);
