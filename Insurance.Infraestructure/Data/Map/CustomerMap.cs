@@ -22,6 +22,9 @@ namespace Insurance.Infraestructure.Data.Map
             Property(x => x.Phone)
               .HasMaxLength(10);
 
+            Property(x => x.BirthDate)
+                .IsRequired();
+
             HasRequired(x => x.City)
               .WithMany(x => x.Customers)
               .Map(m => m.MapKey("CityId"));

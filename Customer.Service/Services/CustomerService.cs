@@ -70,7 +70,7 @@ namespace Customers.Service.Services
         public void Create(CustomerContract contract)
         {
             var city = this.cityRepository.GetById(contract.CityId);
-            var user = this.userRepository.Get(Guid.Parse(contract.UserId));
+            var user = this.userRepository.GetById(Guid.Parse(contract.UserId));
 
             var customer = new Customer(
                 user, 

@@ -6,9 +6,10 @@ namespace Insurance.Domain.Repositories
 {
     public interface IUserRepository : IDisposable
     {
-        User Get(string email);
-        User Get(Guid id);
-        List<User> Get(int skip, int take);
+        User GetById(Guid id);
+        User GetByEmail(string email);
+        List<User> GetByRange(int skip, int take);
+        List<User> GetAll();
         void Create(User user);
         void Update(User user);
         void Delete(User user);

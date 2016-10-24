@@ -28,12 +28,12 @@ namespace UsersService.Services
 
         public List<User> GetByRange(int skip, int take)
         {
-            throw new NotImplementedException();
+            return this._repository.GetByRange(skip, take);
         }
 
         public void Create(string email, string password, string confirmPassword)
         {
-            var hasUser = _repository.Get(email);
+            var hasUser = _repository.GetByEmail(email);
             if (hasUser != null)
                 throw new Exception(Errors.DuplicateEmail);
 
@@ -51,7 +51,7 @@ namespace UsersService.Services
 
         public User GetByEmail(string email)
         {
-            var user = _repository.Get(email);
+            var user = _repository.GetByEmail(email);
             if (user == null)
                 throw new Exception(Errors.UserNotFound);
 
@@ -61,6 +61,16 @@ namespace UsersService.Services
         public void Dispose()
         {
             _repository.Dispose();
+        }
+
+        public User GetById(string id)
+        {
+            return this._repository.GetById(Guid.Parse(id));
+        }
+
+        public List<User> GetAll()
+        {
+            return this._repository.GetAll();
         }
     }
 }

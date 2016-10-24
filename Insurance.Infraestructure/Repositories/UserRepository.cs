@@ -16,19 +16,32 @@ namespace Insurance.Infraestructure.Repositories
             this._context = context;
         }
 
-        public User Get(string email)
+        public User GetByEmail(string email)
         {
-            return _context.Users.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
+            return _context.Users
+               .Where(x => x.Email.ToLower().Equals(email.ToLower()))
+               .ToList()
+               .Select(x => new User(x.UserId, x.Email, x.Active, x.RegisterDate, x.LastAccessDate) { })
+               .FirstOrDefault();
         }
 
-        public User Get(Guid id)
+        public User GetById(Guid id)
         {
-            return _context.Users.Where(x => x.UserId == id).FirstOrDefault();
+            return _context.Users
+                .Where(x => x.UserId == id)
+                .ToList()
+                .Select(x => new User(x.UserId, x.Email, x.Active, x.RegisterDate, x.LastAccessDate) {})
+                .FirstOrDefault();
         }
 
-        public List<User> Get(int skip, int take)
+        public List<User> GetByRange(int skip, int take)
         {
             return _context.Users.OrderBy(x => x.Email).Skip(skip).Take(take).ToList();
+        }
+
+        public List<User> GetAll()
+        {
+            return _context.Users.OrderBy(x => x.Email).ToList();
         }
 
         public void Create(User user)

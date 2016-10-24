@@ -18,6 +18,15 @@ namespace Insurance.Domain.Models
             this.RegisterDate = DateTime.Now;
             this.LastAccessDate = DateTime.Now;
         }
+
+        public User(Guid userId, string email, Boolean active, DateTime register, DateTime lastAcess)
+        {
+            this.UserId = userId;
+            this.Email = email;
+            this.Active = active;
+            this.RegisterDate = register;
+            this.LastAccessDate = lastAcess;
+        }
         #endregion
 
         #region Properties

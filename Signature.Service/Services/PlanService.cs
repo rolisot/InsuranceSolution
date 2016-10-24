@@ -1,9 +1,8 @@
-﻿using Insurance.Domain.Models;
+﻿using Insurance.Domain.Contracts;
+using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System.Collections.Generic;
-using System;
-using Insurance.Domain.Contracts;
 
 namespace Signatures.Service.Services
 {
