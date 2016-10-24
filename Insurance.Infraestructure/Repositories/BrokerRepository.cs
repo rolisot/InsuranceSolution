@@ -3,6 +3,7 @@ using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Insurance.Infraestructure.Repositories
 {
@@ -78,5 +79,16 @@ namespace Insurance.Infraestructure.Repositories
                 .Where(x => x.Name == name)
                 .FirstOrDefault();
         }
+
+        //public BrokerInsurance GetByBrokerInsuranceId(int brokerInsuranceId)
+        //{
+        //    var brokerInsurance = context.Brokers
+        //        .Include("BrokerInsurance")
+        //        .Select(x => x.BrokerInsurance.Any(i => i.BrokerInsuranceId == brokerInsuranceId))
+        //        .FirstOrDefault();
+
+        //    return new BrokerInsurance(null,null, null, null);
+        //    //return brokerInsurance.BrokerInsurance.Where(x => x.BrokerInsuranceId == brokerInsuranceId).First();
+        //}
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Contracts\BrokerParameterContract.cs" />
     <Compile Include="Contracts\CustomerContract.cs" />
     <Compile Include="Contracts\PlanContract.cs" />
+    <Compile Include="Contracts\QuotationBrokerContract.cs" />
     <Compile Include="Contracts\QuotationContract.cs" />
     <Compile Include="Contracts\SignatureContract.cs" />
     <Compile Include="Enumerators\CalculatingIntegrationStatusType.cs" />

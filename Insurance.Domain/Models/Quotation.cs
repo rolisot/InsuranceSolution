@@ -1,5 +1,6 @@
 ﻿using Insurance.Domain.Enumerators;
 using System;
+using System.Collections.Generic;
 
 namespace Insurance.Domain.Models
 {
@@ -20,6 +21,8 @@ namespace Insurance.Domain.Models
         public QuotationStatusType Status { get; private set; }
         public virtual Customer Customer { get; set; }
         public virtual City City { get; set; }
+
+        public ICollection<QuotationBroker> QuotationBroker { get; set; }
 
     }
 }

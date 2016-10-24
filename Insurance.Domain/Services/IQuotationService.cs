@@ -15,5 +15,6 @@ namespace Insurance.Domain.Services
         void Create(QuotationContract contract);
         void Update(Quotation quotation);
         void Delete(int id);
+        void AddQuotationBroker(int quotationId, int brokerId);
     }
 }

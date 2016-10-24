@@ -20,6 +20,7 @@ namespace Insurance.Infraestructure.Data
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Broker> Brokers { get; set; }
         public DbSet<Quotation> Quotations { get; set; }
+        public DbSet<BrokerInsurance> BrokerInsurances { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -35,6 +36,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new BrokerPlanMap());
             modelBuilder.Configurations.Add(new BrokerParameterMap());
             modelBuilder.Configurations.Add(new QuotationMap());
+            modelBuilder.Configurations.Add(new QuotationBrokerMap());
         }
     }
 }

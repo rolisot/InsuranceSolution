@@ -4,6 +4,7 @@ using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System.Collections.Generic;
+using System;
 
 namespace Quotations.Service.Services
 {
@@ -12,12 +13,17 @@ namespace Quotations.Service.Services
         private IQuotationRepository quotationRepository;
         private ICityRepository cityRepostitory;
         private ICustomerRepository customerRepository;
+        private IBrokerInsuranceRepository brokerRepository;
 
-        public QuotationService(IQuotationRepository quotationContext, ICityRepository cityContext, ICustomerRepository customerContext)
+        public QuotationService(IQuotationRepository quotationContext, 
+            ICityRepository cityContext, 
+            ICustomerRepository customerContext,
+            IBrokerInsuranceRepository brokerContext)
         {
             this.quotationRepository = quotationContext;
             this.cityRepostitory = cityContext;
             this.customerRepository = customerContext;
+            this.brokerRepository = brokerContext;
         }
 
         public void Create(QuotationContract contract)
@@ -31,11 +37,11 @@ namespace Quotations.Service.Services
 
         public void Delete(int id)
         {
-            var quo = this.GetById(id);
+            var quotation = this.GetById(id);
 
-            if (quo != null)
+            if (quotation != null)
             {
-                this.quotationRepository.Delete(quo);
+                this.quotationRepository.Delete(quotation);
             }
         }
 
@@ -44,6 +50,7 @@ namespace Quotations.Service.Services
             this.quotationRepository.Dispose();
             this.cityRepostitory.Dispose();
             this.customerRepository.Dispose();
+            this.brokerRepository.Dispose();
         }
 
         public List<Quotation> GetAll()
@@ -69,6 +76,22 @@ namespace Quotations.Service.Services
         public void Update(Quotation quotation)
         {
             this.quotationRepository.Update(quotation);
+        }
+
+        public void AddQuotationBroker(int quotationId, int brokerInsuranceId)
+        {
+            var quotation = this.GetById(quotationId);
+            var brokerInsurance = this.brokerRepository.GetById(brokerInsuranceId);
+
+            if ((quotation != null) && (brokerInsurance != null))
+            {
+                quotation.QuotationBroker = new List<QuotationBroker>();
+
+                var quotationBroker = new QuotationBroker(quotation, brokerInsurance);
+                quotation.QuotationBroker.Add(quotationBroker);
+
+                this.Update(quotation);
+            }
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     public enum QuotationStatusType
     {
-            New,
-            Processing,
-            WaitCalculate,
-            ProcessingCalculate,
-            EstimateInAnalisys
+            New = 1,
+            Processing = 2,
+            WaitCalculate = 3,
+            ProcessingCalculate = 4,
+            EstimateInAnalisys = 5
     }
 }

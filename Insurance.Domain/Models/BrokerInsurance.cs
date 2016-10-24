@@ -1,5 +1,6 @@
 ﻿using Insurance.Common.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace Insurance.Domain.Models
 {
@@ -22,5 +23,7 @@ namespace Insurance.Domain.Models
         public string Password { get; private set; }
         public virtual Broker Broker { get; set; }
         public virtual InsuranceCompany Insurance { get; set; }
+
+        public ICollection<QuotationBroker> QuotationBroker { get; set; }
     }
 }

@@ -58,10 +58,12 @@
     <Compile Include="Data\Map\CustomerMap.cs" />
     <Compile Include="Data\Map\InsuranceCompanyMap.cs" />
     <Compile Include="Data\Map\PlanMap.cs" />
+    <Compile Include="Data\Map\QuotationBrokerMap.cs" />
     <Compile Include="Data\Map\QuotationMap.cs" />
     <Compile Include="Data\Map\StateMap.cs" />
     <Compile Include="Data\Map\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BrokerInsuranceRepository.cs" />
     <Compile Include="Repositories\BrokerRepository.cs" />
     <Compile Include="Repositories\CityRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
