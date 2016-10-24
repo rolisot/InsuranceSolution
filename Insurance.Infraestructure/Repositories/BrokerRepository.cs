@@ -3,7 +3,6 @@ using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Insurance.Infraestructure.Repositories
 {

@@ -2,7 +2,6 @@
 using Insurance.Domain.Contracts;
 using Insurance.Domain.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,15 +9,15 @@ using System.Web.Http;
 
 namespace Insurance.Api.Controllers
 {
-    [RoutePrefix("api/customers")]
+    [RoutePrefix("api/quotations")]
     [Authorize]
-    public class CustomersController : ApiController
+    public class QuotationsController : ApiController
     {
-        private ICustomerService customerService;
+        private IQuotationService service;
 
-        public CustomersController(ICustomerService customerContext)
+        public QuotationsController(IQuotationService context)
         {
-            this.customerService = customerContext;
+            this.service = context;
         }
 
         [HttpGet]
@@ -27,19 +26,18 @@ namespace Insurance.Api.Controllers
         {
             try
             {
-                var list = customerService.GetAll();
+                var list = service.GetAll();
 
                 if (list == null)
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
 
                 return Request.CreateResponse(HttpStatusCode.OK, list.Select(x => new
                 {
-                    id = x.CustomerId,
-                    name = x.Name,
-                    cnpj = x.Cpf,
+                    id = x.QuotationId,
+                    customer = x.Customer,
+                    registerDate = x.RegisterDate,
                     city = x.City,
-                    phone = x.Phone
-                    //birthDate = x.BirthDate
+                    status = x.Status
                 }));
             }
             catch (Exception ex)
@@ -57,7 +55,7 @@ namespace Insurance.Api.Controllers
                 if (id == 0)
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
 
-                var broker = customerService.GetById(id);
+                var broker = service.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, broker);
             }
             catch (Exception ex)
@@ -68,15 +66,15 @@ namespace Insurance.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public HttpResponseMessage Post(CustomerContract contract)
+        public HttpResponseMessage Post(QuotationContract contract)
         {
             if (contract == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             try
             {
-                customerService.Create(contract);
-                return Request.CreateResponse(HttpStatusCode.OK, Messages.CustomerSuccessfulyRegistered);
+                service.Create(contract);
+                return Request.CreateResponse(HttpStatusCode.OK, Messages.QuotationSuccessfulyRegistered);
             }
             catch (Exception ex)
             {

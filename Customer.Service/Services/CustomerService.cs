@@ -10,10 +10,14 @@ namespace Customers.Service.Services
     public class CustomerService : ICustomerService
     {
         private ICustomerRepository customerRepository;
+        private ICityRepository cityRepository;
+        private IUserRepository userRepository;
 
-        public CustomerService(ICustomerRepository repository)
+        public CustomerService(ICustomerRepository customerContext, ICityRepository cityContext, IUserRepository userContext)
         {
-            this.customerRepository = repository;
+            this.customerRepository = customerContext;
+            this.cityRepository = cityContext;
+            this.userRepository = userContext;
         }
 
         public void Delete(int id)
@@ -28,7 +32,9 @@ namespace Customers.Service.Services
 
         public void Dispose()
         {
-            customerRepository.Dispose();
+            this.customerRepository.Dispose();
+            this.cityRepository.Dispose();
+            this.userRepository.Dispose();
         }
 
         public List<Customer> GetAll()
@@ -63,12 +69,15 @@ namespace Customers.Service.Services
 
         public void Create(CustomerContract contract)
         {
+            var city = this.cityRepository.GetById(contract.CityId);
+            var user = this.userRepository.Get(Guid.Parse(contract.UserId));
+
             var customer = new Customer(
-                Guid.Parse(contract.UserId), 
+                user, 
                 contract.Name, 
                 contract.Cpf, 
-                contract.Phone, 
-                contract.CityId, 
+                contract.Phone,
+                city, 
                 DateTime.Parse(contract.BirthDate));
 
             this.customerRepository.Create(customer);

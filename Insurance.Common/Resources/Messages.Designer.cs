@@ -106,6 +106,15 @@ namespace Insurance.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quotation successfuly registered..
+        /// </summary>
+        public static string QuotationSuccessfulyRegistered {
+            get {
+                return ResourceManager.GetString("QuotationSuccessfulyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your new password is {0}.
         /// </summary>
         public static string ResetPasswordEmailBody {

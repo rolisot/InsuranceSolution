@@ -46,6 +46,7 @@
     <Compile Include="Contracts\BrokerParameterContract.cs" />
     <Compile Include="Contracts\CustomerContract.cs" />
     <Compile Include="Contracts\PlanContract.cs" />
+    <Compile Include="Contracts\QuotationContract.cs" />
     <Compile Include="Contracts\SignatureContract.cs" />
     <Compile Include="Enumerators\CalculatingIntegrationStatusType.cs" />
     <Compile Include="Enumerators\EstimateStatusType.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IInsuranceCompanyRepository.cs" />
     <Compile Include="Repositories\IPlanRepository.cs" />
+    <Compile Include="Repositories\IQuotationRepository.cs" />
     <Compile Include="Repositories\ISecurityRepository.cs" />
     <Compile Include="Repositories\IStateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IInsuranceCompanyService.cs" />
     <Compile Include="Services\IPlanService.cs" />
+    <Compile Include="Services\IQuotationService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Services\IStateService.cs" />
     <Compile Include="Services\IUserService.cs" />

@@ -132,6 +132,9 @@
   <data name="PlanSuccessfulyRegistered" xml:space="preserve">
     <value>Plan successfuly registered.</value>
   </data>
+  <data name="QuotationSuccessfulyRegistered" xml:space="preserve">
+    <value>Quotation successfuly registered.</value>
+  </data>
   <data name="ResetPasswordEmailBody" xml:space="preserve">
     <value>Your new password is {0}</value>
   </data>

@@ -1,6 +1,8 @@
 ﻿using Insurance.Common.Resources;
 using Insurance.Common.Validation;
 using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Insurance.Domain.Models
 {
@@ -25,6 +27,9 @@ namespace Insurance.Domain.Models
         public Boolean Active { get; private set; }
         public DateTime RegisterDate { get; private set; }
         public DateTime LastAccessDate { get; private set; }
+
+        [IgnoreDataMember]
+        public virtual ICollection<Customer> Customers { get; set; }
         #endregion
 
         #region Methods

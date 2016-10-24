@@ -132,6 +132,9 @@
   <data name="PlanSuccessfulyRegistered" xml:space="preserve">
     <value>Plano cadastrado com sucesso.</value>
   </data>
+  <data name="QuotationSuccessfulyRegistered" xml:space="preserve">
+    <value>Cotação cadastrada com sucesso.</value>
+  </data>
   <data name="ResetPasswordEmailBody" xml:space="preserve">
     <value>Sua nova senha é {0}.</value>
   </data>

@@ -3,7 +3,6 @@ using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
 using System.Collections.Generic;
-using System;
 
 namespace Brokers.Service.Services
 {

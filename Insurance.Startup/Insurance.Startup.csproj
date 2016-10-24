@@ -83,6 +83,10 @@
       <Project>{1234a8b7-afb7-4076-b4b8-deae592dfb8e}</Project>
       <Name>InsuranceService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Quotation.Service\Quotations.Service.csproj">
+      <Project>{fe337703-005d-47ce-8e9b-7cd66fc744c2}</Project>
+      <Name>Quotations.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Security.Service\Security.Service.csproj">
       <Project>{72e19807-de01-4e86-98f9-f5ff77edd397}</Project>
       <Name>Security.Service</Name>

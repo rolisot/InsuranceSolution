@@ -1,5 +1,4 @@
 ﻿using Insurance.Domain.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Insurance.Infraestructure.Data.Map
@@ -12,10 +11,6 @@ namespace Insurance.Infraestructure.Data.Map
 
             HasKey(x => x.CustomerId);
 
-            //Property(x => x.Name)
-            //    .HasMaxLength(60)
-            //    .IsRequired();
-
             Property(x => x.Name)
                 .HasMaxLength(120)
                 .IsRequired();
@@ -27,14 +22,13 @@ namespace Insurance.Infraestructure.Data.Map
             Property(x => x.Phone)
               .HasMaxLength(10);
 
-            Property(x => x.Phone)
-             .HasMaxLength(11)
-             .IsRequired();
+            HasRequired(x => x.City)
+              .WithMany(x => x.Customers)
+              .Map(m => m.MapKey("CityId"));
 
-            //1:N
-            //HasRequired(x => x.City)
-            //  .WithMany(x => x.Cities)
-            //  .Map(m => m.MapKey("CityId"));
+            HasRequired(x => x.User)
+             .WithMany(x => x.Customers)
+             .Map(m => m.MapKey("UserId"));
         }
     }
 }

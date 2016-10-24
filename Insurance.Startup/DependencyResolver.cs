@@ -7,6 +7,7 @@ using Insurance.Infraestructure.Data;
 using Insurance.Infraestructure.Repositories;
 using InsuranceService.Services;
 using Microsoft.Practices.Unity;
+using Quotations.Service.Services;
 using Security.Service.Services;
 using Signatures.Service.Services;
 using UsersService.Services;
@@ -48,6 +49,10 @@ namespace Insurance.Startup
             container.RegisterType<IBrokerRepository, BrokerRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IBrokerService, BrokerService>(new HierarchicalLifetimeManager());
             container.RegisterType<Broker, Broker>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IQuotationRepository, QuotationRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IQuotationService, QuotationService>(new HierarchicalLifetimeManager());
+            container.RegisterType<Quotation, Quotation>(new HierarchicalLifetimeManager());
         }
     }
 }
