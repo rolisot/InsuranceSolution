@@ -2,8 +2,8 @@
 using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
-using System;
 
 namespace Insurance.Infraestructure.Repositories
 {
@@ -36,7 +36,7 @@ namespace Insurance.Infraestructure.Repositories
         public Broker GetById(int id)
         {
             return context.Brokers
-                .Include("City")
+                .Include("Address")
                 .Include("BrokerParameter")
                 .Include("BrokerPlan")
                 .Include("BrokerInsurance")
@@ -47,7 +47,9 @@ namespace Insurance.Infraestructure.Repositories
 
         public List<Broker> GetAll()
         {
-            return context.Brokers.Include("City").OrderBy(x => x.Name).ToList();
+            return context.Brokers
+                .Include("Address")
+                .OrderBy(x => x.Name).ToList();
         }
 
         public void Update(Broker broker)
@@ -59,36 +61,36 @@ namespace Insurance.Infraestructure.Repositories
         public Broker GetByCnpj(string cnpj)
         {
             return context.Brokers
-                .Include("City")
+                .Include("Address")
                 .Include("BrokerParameter")
                 .Include("BrokerPlan")
                 .Include("BrokerInsurance")
                 .Include("BrokerInsurance.Insurance")
-                .Where(x => x.Cnpj == cnpj)
+                .Where(x => x.Cnpj.Equals(cnpj))
                 .FirstOrDefault();
         }
 
         public Broker GetByName(string name)
         {
             return context.Brokers
-                .Include("City")
+                .Include("Address")
                 .Include("BrokerParameter")
                 .Include("BrokerPlan")
                 .Include("BrokerInsurance")
                 .Include("BrokerInsurance.Insurance")
-                .Where(x => x.Name == name)
+                .Where(x => x.Name.Equals(name))
                 .FirstOrDefault();
         }
 
-        //public BrokerInsurance GetByBrokerInsuranceId(int brokerInsuranceId)
-        //{
-        //    var brokerInsurance = context.Brokers
-        //        .Include("BrokerInsurance")
-        //        .Select(x => x.BrokerInsurance.Any(i => i.BrokerInsuranceId == brokerInsuranceId))
-        //        .FirstOrDefault();
+        public List<BrokerInsurance> GetBrokersByCoordinates(decimal latitude, decimal longitude)
+        {
+            SqlParameter[] parameters = new SqlParameter[] {
+            new SqlParameter( "@Latitude", latitude),
+            new SqlParameter("@Longitude", longitude) };
 
-        //    return new BrokerInsurance(null,null, null, null);
-        //    //return brokerInsurance.BrokerInsurance.Where(x => x.BrokerInsuranceId == brokerInsuranceId).First();
-        //}
+            return context.BrokerInsurances
+                .SqlQuery("GetBrokersByCoordinates @Latitude, @Longitude", parameters)
+                .ToList();
+        }
     }
 }

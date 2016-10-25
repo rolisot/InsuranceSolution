@@ -23,17 +23,16 @@ namespace Insurance.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public HttpResponseMessage Post(QuotationBrokerContract contract)
+        public HttpResponseMessage Post()
         {
             var quotationId = Request.GetRouteData().Values["quotationId"];
 
-            if ((contract == null)|| (quotationId == null))
+            if (quotationId == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             try
             {
-                
-                quotationService.AddQuotationBroker(Convert.ToInt32(quotationId), contract.BrokerId);
+                quotationService.AddQuotationBroker(Convert.ToInt32(quotationId));
                 return Request.CreateResponse(HttpStatusCode.OK, Messages.QuotationSuccessfulyRegistered);
             }
             catch (Exception ex)

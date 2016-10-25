@@ -1,5 +1,6 @@
 ﻿using Insurance.Common.Helper;
 using System;
+using System.Runtime.Serialization;
 
 namespace Insurance.Domain.Models
 {
@@ -24,6 +25,8 @@ namespace Insurance.Domain.Models
         public Decimal Latitude { get; private set; }
         public Decimal Longitude { get; private set; }
         public virtual City City { get; set; }
+
+        [IgnoreDataMember]
         public virtual Broker Broker { get; set; }
 
         public string GetAddressToGoogleMaps()

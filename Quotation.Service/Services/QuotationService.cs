@@ -13,16 +13,19 @@ namespace Quotations.Service.Services
         private IQuotationRepository quotationRepository;
         private ICityRepository cityRepostitory;
         private ICustomerRepository customerRepository;
-        private IBrokerInsuranceRepository brokerRepository;
+        private IBrokerInsuranceRepository brokerInsuranceRepository;
+        private IBrokerRepository brokerRepository;
 
         public QuotationService(IQuotationRepository quotationContext, 
             ICityRepository cityContext, 
             ICustomerRepository customerContext,
-            IBrokerInsuranceRepository brokerContext)
+            IBrokerInsuranceRepository brokerInsuranceContext,
+            IBrokerRepository brokerContext)
         {
             this.quotationRepository = quotationContext;
             this.cityRepostitory = cityContext;
             this.customerRepository = customerContext;
+            this.brokerInsuranceRepository = brokerInsuranceContext;
             this.brokerRepository = brokerContext;
         }
 
@@ -50,6 +53,7 @@ namespace Quotations.Service.Services
             this.quotationRepository.Dispose();
             this.cityRepostitory.Dispose();
             this.customerRepository.Dispose();
+            this.brokerInsuranceRepository.Dispose();
             this.brokerRepository.Dispose();
         }
 
@@ -78,19 +82,29 @@ namespace Quotations.Service.Services
             this.quotationRepository.Update(quotation);
         }
 
-        public void AddQuotationBroker(int quotationId, int brokerInsuranceId)
+
+        public void AddQuotationBroker(int quotationId)
         {
             var quotation = this.GetById(quotationId);
-            var brokerInsurance = this.brokerRepository.GetById(brokerInsuranceId);
 
-            if ((quotation != null) && (brokerInsurance != null))
+            if (quotation != null)
             {
                 quotation.QuotationBroker = new List<QuotationBroker>();
 
-                var quotationBroker = new QuotationBroker(quotation, brokerInsurance);
-                quotation.QuotationBroker.Add(quotationBroker);
+                List<BrokerInsurance> brokers = this.brokerRepository.GetBrokersByCoordinates(
+                Convert.ToDecimal(-29.697960)
+                , Convert.ToDecimal(-51.1341892));
 
-                this.Update(quotation);
+                if (brokers != null)
+                {
+                    foreach (BrokerInsurance broker in brokers)
+                    {
+                        var quotationBroker = new QuotationBroker(quotation, broker);
+                        quotation.QuotationBroker.Add(quotationBroker);
+                    }
+
+                    this.Update(quotation);
+                }
             }
         }
     }

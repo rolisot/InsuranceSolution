@@ -1,6 +1,7 @@
 ﻿using Insurance.Common.Validation;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Insurance.Domain.Models
 {
@@ -20,10 +21,14 @@ namespace Insurance.Domain.Models
         public int BrokerInsuranceId { get; private set; }
         public Boolean Active { get; private set; }
         public string Login { get; private set; }
-        public string Password { get; private set; }
-        public virtual Broker Broker { get; set; }
-        public virtual InsuranceCompany Insurance { get; set; }
 
+        [IgnoreDataMember]
+        public string Password { get; private set; }
+        [IgnoreDataMember]
+        public virtual Broker Broker { get; set; }
+        [IgnoreDataMember]
+        public virtual InsuranceCompany Insurance { get; set; }
+        [IgnoreDataMember]
         public ICollection<QuotationBroker> QuotationBroker { get; set; }
     }
 }

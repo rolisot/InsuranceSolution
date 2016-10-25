@@ -1,4 +1,6 @@
-﻿namespace Insurance.Domain.Models
+﻿using System.Runtime.Serialization;
+
+namespace Insurance.Domain.Models
 {
     public class BrokerParameter
     {
@@ -12,6 +14,7 @@
 
         public int BrokerParameterId { get; private set; }
         public decimal Commission { get; private set; }
+        [IgnoreDataMember]
         public virtual Broker Broker { get; set; }
     }
 }

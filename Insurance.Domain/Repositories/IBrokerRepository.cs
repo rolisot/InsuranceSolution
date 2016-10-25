@@ -14,5 +14,6 @@ namespace Insurance.Domain.Repositories
         void Create(Broker broker);
         void Update(Broker broker);
         void Delete(Broker broker);
+        List<BrokerInsurance> GetBrokersByCoordinates(decimal latitude, decimal longitude);
     }
 }
