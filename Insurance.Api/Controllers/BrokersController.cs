@@ -36,7 +36,7 @@ namespace Insurance.Api.Controllers
                     id = x.BrokerId,
                     name = x.Name,
                     cnpj = x.Cnpj,
-                    city = x.City
+                    address = x.Address
                 }));
             }
             catch (Exception ex)

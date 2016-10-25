@@ -1,7 +1,9 @@
-﻿using Insurance.Domain.Contracts;
+﻿using Insurance.Common.Helper;
+using Insurance.Domain.Contracts;
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Brokers.Service.Services
@@ -21,15 +23,38 @@ namespace Brokers.Service.Services
 
         public void Create(BrokerContract contract)
         {
-            var city = this.cityRepository.GetById(contract.CityId);
-            var broker = new Broker(contract.Name, contract.Cnpj, city);
-            
-            if(contract.Parameters != null)
+            var city = this.cityRepository.GetById(contract.Address.CityId);
+
+            var broker = new Broker(contract.Name, contract.Cnpj);
+
+            // Address
+            var address = new BrokerAddress(
+                broker,
+                contract.Address.Address,
+                contract.Address.Cep,
+                contract.Address.Neighborhood,
+                city);
+
+            broker.Address = address;
+
+            // Address Geolocation
+            try
+            {
+                string locateAddress = broker.Address.GetAddressToGoogleMaps();
+                Geolocation geo = GoogleMaps.GetCoordinatesByAddress(locateAddress);
+                broker.Address.SetAddressCoordinates(geo);
+            }
+            catch (Exception ex) { }
+
+
+            // Parameters
+            if (contract.Parameters != null)
             {
                 broker.BrokerParameter = new List<BrokerParameter>();
                 broker.BrokerParameter.Add(new BrokerParameter(broker, contract.Parameters.Commission));
             }
 
+            // Insurances
             if (contract.Insurances != null && contract.Insurances.Count > 0)
             {
                 broker.BrokerInsurance = new List<BrokerInsurance>();

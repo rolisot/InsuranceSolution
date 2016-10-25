@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppDataContext.cs" />
+    <Compile Include="Data\Map\BrokerAddressMap.cs" />
     <Compile Include="Data\Map\BrokerInsuranceMap.cs" />
     <Compile Include="Data\Map\BrokerMap.cs" />
     <Compile Include="Data\Map\BrokerParameterMap.cs" />

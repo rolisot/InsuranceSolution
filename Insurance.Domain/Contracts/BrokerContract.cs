@@ -6,7 +6,7 @@ namespace Insurance.Domain.Contracts
     {
         public string Name { get; set; }
         public string Cnpj { get; set; }
-        public int CityId { get; set; }
+        public BrokerAddressContract Address { get; set; }
         public List<BrokerInsuranceContract> Insurances { get; set; }
         public BrokerParameterContract Parameters { get; set; }
     }

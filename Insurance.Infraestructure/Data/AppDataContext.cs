@@ -22,7 +22,6 @@ namespace Insurance.Infraestructure.Data
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<BrokerInsurance> BrokerInsurances { get; set; }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
@@ -37,6 +36,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new BrokerParameterMap());
             modelBuilder.Configurations.Add(new QuotationMap());
             modelBuilder.Configurations.Add(new QuotationBrokerMap());
+            modelBuilder.Configurations.Add(new BrokerAddressMap());
         }
     }
 }

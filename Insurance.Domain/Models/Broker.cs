@@ -7,11 +7,10 @@ namespace Insurance.Domain.Models
     {
         protected Broker() { }
                     
-        public Broker(string name, string cnpj, City city)
+        public Broker(string name, string cnpj)
         {
             this.Name = name;
             this.Cnpj = cnpj;
-            this.City = city;
             this.Active = true;
         }
 
@@ -19,7 +18,7 @@ namespace Insurance.Domain.Models
         public string Name { get; private set; }
         public string Cnpj { get; private set; }
         public Boolean Active { get; private set; }
-        public virtual City City { get; set; }
+        public virtual BrokerAddress Address { get; set; }
 
         public ICollection<BrokerInsurance> BrokerInsurance { get; set; }
         public ICollection<BrokerPlan> BrokerPlan { get; set; }
