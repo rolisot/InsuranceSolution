@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace Insurance.Api.Controllers
 {
-    [RoutePrefix("api/quotations/{quotationId}/brokers")]
+    [RoutePrefix("api/addQuotationsBrokers")]
     [Authorize]
     public class QuotationBrokersController : ApiController
     {
@@ -25,14 +25,14 @@ namespace Insurance.Api.Controllers
         [Route("")]
         public HttpResponseMessage Post()
         {
-            var quotationId = Request.GetRouteData().Values["quotationId"];
+            //var quotationId = Request.GetRouteData().Values["quotationId"];
 
-            if (quotationId == null)
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //if (quotationId == null)
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             try
             {
-                quotationService.AddQuotationBroker(Convert.ToInt32(quotationId));
+                quotationService.AddQuotationBrokers();
                 return Request.CreateResponse(HttpStatusCode.OK, Messages.QuotationSuccessfulyRegistered);
             }
             catch (Exception ex)

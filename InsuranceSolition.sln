@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersService", "User.Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceService", "InsuranceService\InsuranceService.csproj", "{1234A8B7-AFB7-4076-B4B8-DEAE592DFB8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationMonitor", "QuotationMonitor\QuotationMonitor.csproj", "{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{1234A8B7-AFB7-4076-B4B8-DEAE592DFB8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1234A8B7-AFB7-4076-B4B8-DEAE592DFB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1234A8B7-AFB7-4076-B4B8-DEAE592DFB8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

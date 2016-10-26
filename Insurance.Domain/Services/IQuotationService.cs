@@ -10,11 +10,12 @@ namespace Insurance.Domain.Services
     {
         Quotation GetById(int id);
         Quotation GetByCustomer(int customerId);
-        Quotation GetByStatus(QuotationStatusType status);
+        List<Quotation> GetByStatus(QuotationStatusType status);
         List<Quotation> GetAll();
         void Create(QuotationContract contract);
         void Update(Quotation quotation);
         void Delete(int id);
-        void AddQuotationBroker(int quotationId);
+        void AddQuotationBrokers();
+        void AddQuotationBroker(Quotation quotation);
     }
 }

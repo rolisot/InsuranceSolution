@@ -54,13 +54,14 @@ namespace Insurance.Infraestructure.Repositories
                 .FirstOrDefault();
         }
 
-        public Quotation GetByStatus(QuotationStatusType status)
+        public List<Quotation> GetByStatus(QuotationStatusType status)
         {
             return context.Quotations
                 .Include("City")
                 .Include("Customer")
+                .Include("Customer.Address")
                 .Where(x => x.Status == status)
-                .FirstOrDefault();
+                .ToList();
         }
 
         public Customer GetCustomerByQuotationId(int quotationId)
@@ -68,6 +69,7 @@ namespace Insurance.Infraestructure.Repositories
             var quotation = context.Quotations
                 .Include("City")
                 .Include("Customer")
+                .Include("Customer.Address")
                 .Where(x => x.QuotationId == quotationId)
                 .FirstOrDefault();
 

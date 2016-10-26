@@ -9,7 +9,7 @@ namespace Insurance.Domain.Repositories
     {
         Quotation GetById(int id);
         Quotation GetByCustomer(int customerId);
-        Quotation GetByStatus(QuotationStatusType status);
+        List<Quotation> GetByStatus(QuotationStatusType status);
         Customer GetCustomerByQuotationId(int quotationId);
         List<Quotation> GetAll();
         void Create(Quotation quotation);

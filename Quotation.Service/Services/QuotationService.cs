@@ -72,7 +72,7 @@ namespace Quotations.Service.Services
             return this.quotationRepository.GetById(id);
         }
 
-        public Quotation GetByStatus(QuotationStatusType status)
+        public List<Quotation> GetByStatus(QuotationStatusType status)
         {
             return this.quotationRepository.GetByStatus(status);
         }
@@ -82,11 +82,18 @@ namespace Quotations.Service.Services
             this.quotationRepository.Update(quotation);
         }
 
-
-        public void AddQuotationBroker(int quotationId)
+        public void AddQuotationBrokers()
         {
-            var quotation = this.GetById(quotationId);
+            var quotations = this.GetByStatus(QuotationStatusType.New);
 
+            foreach (Quotation quotation in quotations)
+            {
+                this.AddQuotationBroker(quotation);
+            }
+        }
+
+        public void AddQuotationBroker(Quotation quotation)
+        {
             if (quotation != null)
             {
                 quotation.QuotationBroker = new List<QuotationBroker>();
