@@ -45,6 +45,7 @@
     <Compile Include="Contracts\BrokerContract.cs" />
     <Compile Include="Contracts\BrokerInsuranceContract.cs" />
     <Compile Include="Contracts\BrokerParameterContract.cs" />
+    <Compile Include="Contracts\CustomerAddressContract.cs" />
     <Compile Include="Contracts\CustomerContract.cs" />
     <Compile Include="Contracts\PlanContract.cs" />
     <Compile Include="Contracts\QuotationBrokerContract.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Models\CalculateIntegration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
     <Compile Include="Models\Estimate.cs" />
     <Compile Include="Models\EstimateFeedback.cs" />
     <Compile Include="Models\EstimateRevision.cs" />

@@ -29,8 +29,6 @@ namespace Insurance.Infraestructure.Repositories
         {
             return _context.Users
                 .Where(x => x.UserId == id)
-                .ToList()
-                .Select(x => new User(x.UserId, x.Email, x.Active, x.RegisterDate, x.LastAccessDate) {})
                 .FirstOrDefault();
         }
 

@@ -6,7 +6,7 @@
         public string UserId { get; set; }
         public string Cpf { get; set; }
         public string Phone { get; set; }
-        public int CityId { get; set; }
+        public CustomerAddressContract Address { get; set; }
         public string BirthDate { get; set; }
     }
 }

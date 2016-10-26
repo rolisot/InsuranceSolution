@@ -25,10 +25,6 @@ namespace Insurance.Infraestructure.Data.Map
             Property(x => x.BirthDate)
                 .IsRequired();
 
-            HasRequired(x => x.City)
-              .WithMany(x => x.Customers)
-              .Map(m => m.MapKey("CityId"));
-
             HasRequired(x => x.User)
              .WithMany(x => x.Customers)
              .Map(m => m.MapKey("UserId"));

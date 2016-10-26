@@ -37,6 +37,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new QuotationMap());
             modelBuilder.Configurations.Add(new QuotationBrokerMap());
             modelBuilder.Configurations.Add(new BrokerAddressMap());
+            modelBuilder.Configurations.Add(new CustomerAddressMap());
         }
     }
 }

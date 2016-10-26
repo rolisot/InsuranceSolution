@@ -17,9 +17,9 @@ namespace Insurance.Domain.Models
         public virtual ICollection<BrokerAddress> BrokerAddress { get; set; }
 
         [IgnoreDataMember]
-        public virtual ICollection<Quotation> Quotations { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddress { get; set; }
 
         [IgnoreDataMember]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Quotation> Quotations { get; set; }
     }
 }

@@ -91,9 +91,8 @@ namespace Quotations.Service.Services
             {
                 quotation.QuotationBroker = new List<QuotationBroker>();
 
-                List<BrokerInsurance> brokers = this.brokerRepository.GetBrokersByCoordinates(
-                Convert.ToDecimal(-29.697960)
-                , Convert.ToDecimal(-51.1341892));
+                List<BrokerInsurance> brokers = this.brokerRepository
+                    .GetBrokersByCoordinates(quotation.Customer.Address.Latitude, quotation.Customer.Address.Longitude);
 
                 if (brokers != null)
                 {

@@ -49,6 +49,7 @@ namespace Insurance.Infraestructure.Repositories
             return context.Quotations
                 .Include("City")
                 .Include("Customer")
+                .Include("Customer.Address")
                 .Where(x => x.QuotationId == id)
                 .FirstOrDefault();
         }
@@ -60,6 +61,17 @@ namespace Insurance.Infraestructure.Repositories
                 .Include("Customer")
                 .Where(x => x.Status == status)
                 .FirstOrDefault();
+        }
+
+        public Customer GetCustomerByQuotationId(int quotationId)
+        {
+            var quotation = context.Quotations
+                .Include("City")
+                .Include("Customer")
+                .Where(x => x.QuotationId == quotationId)
+                .FirstOrDefault();
+
+            return quotation.Customer;
         }
 
         public void Update(Quotation quotation)

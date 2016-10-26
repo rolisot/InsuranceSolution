@@ -2,7 +2,6 @@
 using Insurance.Domain.Contracts;
 using Insurance.Domain.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -37,7 +36,6 @@ namespace Insurance.Api.Controllers
                     id = x.CustomerId,
                     name = x.Name,
                     cnpj = x.Cpf,
-                    city = x.City,
                     phone = x.Phone
                     //birthDate = x.BirthDate
                 }));

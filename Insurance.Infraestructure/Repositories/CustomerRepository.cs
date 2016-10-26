@@ -36,7 +36,7 @@ namespace Insurance.Infraestructure.Repositories
         public Customer GetById(int id)
         {
             return context.Customers
-               .Include("City")
+               .Include("Address")
                .Where(x => x.CustomerId == id)
                .FirstOrDefault();
         }
@@ -48,7 +48,7 @@ namespace Insurance.Infraestructure.Repositories
 
         public List<Customer> GetAll()
         {
-            return context.Customers.Include("City").OrderBy(x => x.Name).ToList();
+            return context.Customers.Include("Address").OrderBy(x => x.Name).ToList();
         }
 
         public void Update(Customer customer)
@@ -60,7 +60,7 @@ namespace Insurance.Infraestructure.Repositories
         public Customer GetByUserId(Guid id)
         {
             return context.Customers
-              .Include("City")
+              .Include("Address")
               .Where(x => x.User.UserId == id)
               .FirstOrDefault();
         }
@@ -68,7 +68,7 @@ namespace Insurance.Infraestructure.Repositories
         public Customer GetByCpf(string cpf)
         {
             return context.Customers
-              .Include("City")
+              .Include("Address")
               .Where(x => x.Cpf == cpf)
               .FirstOrDefault();
         }
@@ -76,9 +76,21 @@ namespace Insurance.Infraestructure.Repositories
         public Customer GetByName(string name)
         {
             return context.Customers
-              .Include("City")
+              .Include("Address")
               .Where(x => x.Name == name)
               .FirstOrDefault();
         }
+
+        //public Customer GetByQuotationId(int quotationId)
+        //{
+        //    var result = context.Customers
+        //      .Include("Address")
+        //      .Include("Quotation")
+        //      .Select(x => x.Quotations.Where(q => q.QuotationId == quotationId))
+        //      .ToList()
+        //      .FirstOrDefault();
+
+        //    return result.Single().Customer;
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using Insurance.Domain.Contracts;
+﻿using Insurance.Common.Helper;
+using Insurance.Domain.Contracts;
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
@@ -69,18 +70,39 @@ namespace Customers.Service.Services
 
         public void Create(CustomerContract contract)
         {
-            var city = this.cityRepository.GetById(contract.CityId);
+            var city = this.cityRepository.GetById(contract.Address.CityId);
             var user = this.userRepository.GetById(Guid.Parse(contract.UserId));
 
-            var customer = new Customer(
-                user, 
-                contract.Name, 
-                contract.Cpf, 
+            if (user != null)
+            {
+                var customer = new Customer(
+                user,
+                contract.Name,
+                contract.Cpf,
                 contract.Phone,
-                city, 
                 DateTime.Parse(contract.BirthDate));
 
-            this.customerRepository.Create(customer);
+                // Address
+                var address = new CustomerAddress(
+                    customer,
+                    contract.Address.Address,
+                    contract.Address.Cep,
+                    contract.Address.Neighborhood,
+                    city);
+
+                customer.Address = address;
+
+                // Address Geolocation
+                try
+                {
+                    string locateAddress = customer.Address.GetAddressToGoogleMaps();
+                    Geolocation geo = GoogleMaps.GetCoordinatesByAddress(locateAddress);
+                    customer.Address.SetAddressCoordinates(geo);
+                }
+                catch (Exception ex) { }
+
+                this.customerRepository.Create(customer);
+            }
         }
 
         public void Update(Customer customer)
