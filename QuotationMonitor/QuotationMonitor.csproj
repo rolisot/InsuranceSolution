@@ -78,6 +78,10 @@
       <Project>{28F6D39D-B40A-4A5A-910F-46CB81E97390}</Project>
       <Name>Insurance.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Insurance.Infraestructure\Insurance.Infraestructure.csproj">
+      <Project>{A48B8526-1ABB-4FF5-92A9-C72FC5149AA9}</Project>
+      <Name>Insurance.Infraestructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Insurance.Startup\Insurance.Startup.csproj">
       <Project>{bd9a29c8-d63c-4a0b-beb2-57deb9d6c0e4}</Project>
       <Name>Insurance.Startup</Name>

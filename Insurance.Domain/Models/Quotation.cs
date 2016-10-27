@@ -11,9 +11,9 @@ namespace Insurance.Domain.Models
         public Quotation(Customer customer, City city)
         {
             this.RegisterDate = DateTime.Now;
-            this.Status = QuotationStatusType.New;
             this.Customer = customer;
             this.City = city;
+            this.SetNewStatus();
         }
 
         public int QuotationId { get; private set; }
@@ -24,5 +24,29 @@ namespace Insurance.Domain.Models
 
         public ICollection<QuotationBroker> QuotationBroker { get; set; }
 
+        public void SetNewStatus()
+        {
+            this.Status = QuotationStatusType.New;
+        }
+
+        public void SetProcessingStatus()
+        {
+            this.Status = QuotationStatusType.Processing;
+        }
+
+        public void SetWaitCalculateStatus()
+        {
+            this.Status = QuotationStatusType.WaitCalculate;
+        }
+
+        public void SetProcessingCalculatStatus()
+        {
+            this.Status = QuotationStatusType.ProcessingCalculate;
+        }
+
+        public void SetEstimateInAnalisysStatus()
+        {
+            this.Status = QuotationStatusType.EstimateInAnalisys;
+        }
     }
 }

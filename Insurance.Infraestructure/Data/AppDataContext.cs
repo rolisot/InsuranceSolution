@@ -21,6 +21,7 @@ namespace Insurance.Infraestructure.Data
         public DbSet<Broker> Brokers { get; set; }
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<BrokerInsurance> BrokerInsurances { get; set; }
+        public DbSet<QuotationBroker> QuotationBrokers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

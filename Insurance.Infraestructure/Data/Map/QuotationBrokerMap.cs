@@ -1,10 +1,6 @@
 ﻿using Insurance.Domain.Models;
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Insurance.Infraestructure.Data.Map
 {
@@ -15,6 +11,9 @@ namespace Insurance.Infraestructure.Data.Map
             ToTable("QuotationBroker");
 
             HasKey(x => x.QuotationBrokerId);
+
+            Property(x => x.QuotationBrokerId)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             HasRequired(x => x.Quotation)
             .WithMany(x => x.QuotationBroker)

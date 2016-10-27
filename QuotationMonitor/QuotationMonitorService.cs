@@ -10,9 +10,9 @@ namespace QuotationMonitor
     {
         private Timer _syncTimer;
         private static object s_lock = new object();
-        private IQuotationService service;
+        private IQuotationBrokersService service;
 
-        public QuotationMonitorService(IQuotationService context)
+        public QuotationMonitorService(IQuotationBrokersService context)
         {
             service = context;
         }

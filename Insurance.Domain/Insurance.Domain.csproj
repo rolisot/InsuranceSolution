@@ -91,6 +91,7 @@
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IInsuranceCompanyService.cs" />
     <Compile Include="Services\IPlanService.cs" />
+    <Compile Include="Services\IQuotationBrokersService.cs" />
     <Compile Include="Services\IQuotationService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
     <Compile Include="Services\IStateService.cs" />

@@ -82,15 +82,14 @@ namespace Insurance.Infraestructure.Repositories
                 .FirstOrDefault();
         }
 
-        public List<BrokerInsurance> GetBrokersByCoordinates(decimal latitude, decimal longitude)
+        public void AddBrokersByCoordinates(Quotation quotation)
         {
             SqlParameter[] parameters = new SqlParameter[] {
-            new SqlParameter( "@Latitude", latitude),
-            new SqlParameter("@Longitude", longitude) };
+            new SqlParameter( "@quotationId", quotation.QuotationId),
+            new SqlParameter( "@Latitude", quotation.Customer.Address.Latitude),
+            new SqlParameter("@Longitude", quotation.Customer.Address.Longitude) };
 
-            return context.BrokerInsurances
-                .SqlQuery("GetBrokersByCoordinates @Latitude, @Longitude", parameters)
-                .ToList();
+            context.Database.ExecuteSqlCommandAsync("AddBrokersByCoordinates @quotationId, @Latitude, @Longitude", parameters);
         }
     }
 }

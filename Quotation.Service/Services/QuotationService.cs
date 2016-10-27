@@ -81,37 +81,5 @@ namespace Quotations.Service.Services
         {
             this.quotationRepository.Update(quotation);
         }
-
-        public void AddQuotationBrokers()
-        {
-            var quotations = this.GetByStatus(QuotationStatusType.New);
-
-            foreach (Quotation quotation in quotations)
-            {
-                this.AddQuotationBroker(quotation);
-            }
-        }
-
-        public void AddQuotationBroker(Quotation quotation)
-        {
-            if (quotation != null)
-            {
-                quotation.QuotationBroker = new List<QuotationBroker>();
-
-                List<BrokerInsurance> brokers = this.brokerRepository
-                    .GetBrokersByCoordinates(quotation.Customer.Address.Latitude, quotation.Customer.Address.Longitude);
-
-                if (brokers != null)
-                {
-                    foreach (BrokerInsurance broker in brokers)
-                    {
-                        var quotationBroker = new QuotationBroker(quotation, broker);
-                        quotation.QuotationBroker.Add(quotationBroker);
-                    }
-
-                    this.Update(quotation);
-                }
-            }
-        }
     }
 }
