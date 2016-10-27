@@ -1,7 +1,7 @@
 ﻿using Topshelf;
 using Topshelf.Ninject;
 
-namespace QuotationMonitor
+namespace CalculateIntegrationMonitor
 {
     public class Program
     {
@@ -9,8 +9,8 @@ namespace QuotationMonitor
         public static void Main(string[] args)
         {
             HostFactory.Run(x => {
-                x.UseNinject(new QuotationModule());
-                x.Service<QuotationMonitorService>(s =>
+                x.UseNinject(new CalculateIntegrationModule());
+                x.Service<CalculateIntegrationMonitorService>(s =>
                 {
                     s.ConstructUsingNinject();
                     s.WhenStarted((service, hostControl) => service.Start(hostControl));
@@ -18,9 +18,9 @@ namespace QuotationMonitor
                 });
 
                 x.RunAsLocalSystem();
-                x.SetDescription("Monitor for icoming quotations");
-                x.SetDisplayName("Quotation Monitor");
-                x.SetServiceName("QuotationMonitorService");
+                x.SetDescription("Monitor for calculate integration");
+                x.SetDisplayName("Calculate Integration Monitor");
+                x.SetServiceName("CalculateIntegrationMonitorService");
             });
         }
     }

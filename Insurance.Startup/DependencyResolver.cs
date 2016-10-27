@@ -56,6 +56,10 @@ namespace Insurance.Startup
 
             container.RegisterType<IBrokerInsuranceRepository, BrokerInsuranceRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<BrokerInsurance, BrokerInsurance>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<ICalculateIntegrationRepository, CalculateIntegrationRepository>(new HierarchicalLifetimeManager());
+            //container.RegisterType<ICalculateIntegrationService, CalculateIntegrationService>(new HierarchicalLifetimeManager());
+            container.RegisterType<CalculateIntegration, CalculateIntegration>(new HierarchicalLifetimeManager());
         }
     }
 }

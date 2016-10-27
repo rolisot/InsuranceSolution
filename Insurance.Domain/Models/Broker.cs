@@ -23,6 +23,7 @@ namespace Insurance.Domain.Models
         public ICollection<BrokerInsurance> BrokerInsurance { get; set; }
         public ICollection<BrokerPlan> BrokerPlan { get; set; }
         public ICollection<BrokerParameter> BrokerParameter { get; set; }
-        
+        public ICollection<CalculateIntegration> CalculateIntegration { get; set; }
+
     }
 }

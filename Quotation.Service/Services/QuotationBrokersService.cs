@@ -29,7 +29,6 @@ namespace Quotations.Service.Services
             }
         }
 
-
         public void AddQuotationBrokerParameters()
         {
             this.repository.AddQuotationBrokerParameter();

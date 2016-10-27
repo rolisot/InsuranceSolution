@@ -75,6 +75,7 @@
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICalculateIntegrationRepository.cs" />
     <Compile Include="Repositories\IBrokerInsuranceRepository.cs" />
     <Compile Include="Repositories\IBrokerRepository.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\IBrokerInsuranceService.cs" />
     <Compile Include="Services\IBrokerService.cs" />
+    <Compile Include="Services\ICalculateIntegrationService.cs" />
     <Compile Include="Services\ICityService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IInsuranceCompanyService.cs" />

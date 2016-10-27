@@ -24,6 +24,8 @@ namespace Insurance.Domain.Models
 
         public ICollection<QuotationBroker> QuotationBroker { get; set; }
 
+        public ICollection<CalculateIntegration> CalculateIntegration { get; set; }
+
         public void SetNewStatus()
         {
             this.Status = QuotationStatusType.New;
@@ -39,7 +41,7 @@ namespace Insurance.Domain.Models
             this.Status = QuotationStatusType.WaitCalculate;
         }
 
-        public void SetProcessingCalculatStatus()
+        public void SetProcessingCalculateStatus()
         {
             this.Status = QuotationStatusType.ProcessingCalculate;
         }

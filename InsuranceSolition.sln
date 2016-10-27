@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceService", "Insuran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationMonitor", "QuotationMonitor\QuotationMonitor.csproj", "{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateIntegrationMonitor", "CalculateIntegrationMonitor\CalculateIntegrationMonitor.csproj", "{6E8CDB61-3916-4DED-AF42-15591A625892}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DB68CB3-5C11-48F3-A7D3-214F90D3202E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8CDB61-3916-4DED-AF42-15591A625892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8CDB61-3916-4DED-AF42-15591A625892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8CDB61-3916-4DED-AF42-15591A625892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8CDB61-3916-4DED-AF42-15591A625892}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -61,6 +61,10 @@ namespace Insurance.Infraestructure.Repositories
                 .Include("City")
                 .Include("Customer")
                 .Include("Customer.Address")
+                .Include("QuotationBroker")
+                .Include("QuotationBroker.BrokerInsurance")
+                .Include("QuotationBroker.BrokerInsurance.Broker")
+                .Include("QuotationBroker.BrokerInsurance.Insurance")
                 .Where(x => x.Status == status)
                 .ToList();
         }
