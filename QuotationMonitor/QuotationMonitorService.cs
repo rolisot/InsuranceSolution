@@ -21,7 +21,7 @@ namespace QuotationMonitor
         public bool Start(HostControl hostControl)
         {
             _syncTimer = new Timer();
-            _syncTimer.Interval = 5000;
+            _syncTimer.Interval = 20000;
             _syncTimer.Enabled = true;
             _syncTimer.Elapsed += RunJob;
             return true;
@@ -42,6 +42,7 @@ namespace QuotationMonitor
                 try
                 {
                     service.AddQuotationBrokers();
+                    service.AddQuotationBrokerParameters();
                 }
                 finally
                 {

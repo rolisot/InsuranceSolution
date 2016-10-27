@@ -24,11 +24,15 @@ namespace Quotations.Service.Services
             {
                 foreach (Quotation quotation in quotations)
                 {
-                    this.brokerRepository.AddBrokersByCoordinates(quotation);
-                    quotation.SetProcessingStatus();
-                    repository.Update(quotation);
+                    this.repository.AddBrokersByCoordinates(quotation);
                 }
             }
+        }
+
+
+        public void AddQuotationBrokerParameters()
+        {
+            this.repository.AddQuotationBrokerParameter();
         }
 
         public void Dispose()

@@ -15,5 +15,7 @@ namespace Insurance.Domain.Repositories
         void Create(Quotation quotation);
         void Update(Quotation quotation);
         void Delete(Quotation quotation);
+        void AddBrokersByCoordinates(Quotation quotation);
+        void AddQuotationBrokerParameter();
     }
 }

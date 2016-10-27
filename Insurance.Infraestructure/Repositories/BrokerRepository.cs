@@ -81,15 +81,5 @@ namespace Insurance.Infraestructure.Repositories
                 .Where(x => x.Name.Equals(name))
                 .FirstOrDefault();
         }
-
-        public void AddBrokersByCoordinates(Quotation quotation)
-        {
-            SqlParameter[] parameters = new SqlParameter[] {
-            new SqlParameter( "@quotationId", quotation.QuotationId),
-            new SqlParameter( "@Latitude", quotation.Customer.Address.Latitude),
-            new SqlParameter("@Longitude", quotation.Customer.Address.Longitude) };
-
-            context.Database.ExecuteSqlCommandAsync("AddBrokersByCoordinates @quotationId, @Latitude, @Longitude", parameters);
-        }
     }
 }

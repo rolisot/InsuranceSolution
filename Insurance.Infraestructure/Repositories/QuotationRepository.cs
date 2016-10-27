@@ -4,6 +4,7 @@ using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Insurance.Infraestructure.Repositories
@@ -80,6 +81,22 @@ namespace Insurance.Infraestructure.Repositories
         {
             context.Entry<Quotation>(quotation).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
+        }
+
+        public void AddBrokersByCoordinates(Quotation quotation)
+        {
+            SqlParameter[] parameters = new SqlParameter[] {
+            new SqlParameter( "@quotationId", quotation.QuotationId),
+            new SqlParameter( "@Latitude", quotation.Customer.Address.Latitude),
+            new SqlParameter("@Longitude", quotation.Customer.Address.Longitude) };
+
+            context.Database.ExecuteSqlCommand("AddBrokersByCoordinates @quotationId, @Latitude, @Longitude", parameters);
+        }
+
+
+        public void AddQuotationBrokerParameter()
+        {
+            context.Database.ExecuteSqlCommand("AddQuotationBrokerParameter");
         }
     }
 }
