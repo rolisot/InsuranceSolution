@@ -59,6 +59,7 @@
     <Compile Include="Data\Map\CityMap.cs" />
     <Compile Include="Data\Map\CustomerAddressMap.cs" />
     <Compile Include="Data\Map\CustomerMap.cs" />
+    <Compile Include="Data\Map\EstimateMap.cs" />
     <Compile Include="Data\Map\InsuranceCompanyMap.cs" />
     <Compile Include="Data\Map\PlanMap.cs" />
     <Compile Include="Data\Map\QuotationBrokerMap.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Repositories\CalculateIntegrationRepository.cs" />
     <Compile Include="Repositories\CityRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\EstimateRepository.cs" />
     <Compile Include="Repositories\InsuranceCompanyRespository.cs" />
     <Compile Include="Repositories\PlanRepository.cs" />
     <Compile Include="Repositories\QuotationRepository.cs" />

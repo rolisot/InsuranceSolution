@@ -72,6 +72,10 @@
       <Project>{5d570fba-7f7a-44a0-8721-0e9383bd126c}</Project>
       <Name>Customers.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Estimate.Service\Estimates.Service.csproj">
+      <Project>{7BF0324C-4587-4BBF-BC09-C6D159BFF9CD}</Project>
+      <Name>Estimates.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Insurance.Domain\Insurance.Domain.csproj">
       <Project>{28f6d39d-b40a-4a5a-910f-46cb81e97390}</Project>
       <Name>Insurance.Domain</Name>

@@ -1,5 +1,6 @@
 ﻿using Brokers.Service.Services;
 using Customers.Service.Services;
+using Estimates.Service.Services;
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
@@ -58,8 +59,11 @@ namespace Insurance.Startup
             container.RegisterType<BrokerInsurance, BrokerInsurance>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ICalculateIntegrationRepository, CalculateIntegrationRepository>(new HierarchicalLifetimeManager());
-            //container.RegisterType<ICalculateIntegrationService, CalculateIntegrationService>(new HierarchicalLifetimeManager());
             container.RegisterType<CalculateIntegration, CalculateIntegration>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IEstimateRepository, EstimateRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IEstimateService, EstimateService>(new HierarchicalLifetimeManager());
+            container.RegisterType<Estimate, Estimate>(new HierarchicalLifetimeManager());
         }
     }
 }

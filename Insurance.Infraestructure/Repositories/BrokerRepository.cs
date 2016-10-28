@@ -2,7 +2,6 @@
 using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace Insurance.Infraestructure.Repositories

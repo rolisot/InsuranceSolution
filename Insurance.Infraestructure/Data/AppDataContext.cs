@@ -23,6 +23,7 @@ namespace Insurance.Infraestructure.Data
         public DbSet<BrokerInsurance> BrokerInsurances { get; set; }
         public DbSet<QuotationBroker> QuotationBrokers { get; set; }
         public DbSet<CalculateIntegration> CalculateIntegrations { get; set; }
+        public DbSet<Estimate> Estimates { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,6 +42,7 @@ namespace Insurance.Infraestructure.Data
             modelBuilder.Configurations.Add(new BrokerAddressMap());
             modelBuilder.Configurations.Add(new CustomerAddressMap());
             modelBuilder.Configurations.Add(new CalculateIntegrationMap());
+            modelBuilder.Configurations.Add(new EstimateMap());
         }
     }
 }

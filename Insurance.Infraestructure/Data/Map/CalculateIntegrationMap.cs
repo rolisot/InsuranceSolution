@@ -12,7 +12,7 @@ namespace Insurance.Infraestructure.Data.Map
             HasKey(x => x.CalculateIntegrationId);
 
             Property(x => x.SendDate)
-               .IsRequired();
+               .IsOptional();
 
             Property(x => x.SendText)
               .IsRequired();

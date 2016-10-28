@@ -3,6 +3,7 @@ using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Infraestructure.Data;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Insurance.Infraestructure.Repositories
@@ -18,8 +19,17 @@ namespace Insurance.Infraestructure.Repositories
 
         public void Create(CalculateIntegration ci)
         {
-            context.CalculateIntegrations.Add(ci);
-            context.SaveChanges();
+            SqlParameter[] parameters = new SqlParameter[] {
+            new SqlParameter("QuotationId", ci.Quotation.QuotationId),
+            new SqlParameter("BrokerId", ci.Broker.BrokerId),
+            new SqlParameter("SendText", ci.SendText),
+            new SqlParameter("Status", (int) ci.Status )};
+
+            context.Database.ExecuteSqlCommand(@"
+                INSERT INTO CalculateIntegration 
+                (QuotationId,BrokerId,SendDate,SendText,Status)VALUES
+                (@QuotationId, @BrokerId, @SendText, @Status)",
+                parameters);
         }
 
         public void Dispose()

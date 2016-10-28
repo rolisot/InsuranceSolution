@@ -2,10 +2,10 @@
 {
     public enum CalculatingIntegrationStatusType
     {
-        New,
-        Sended,
-        Received,
-        OnEstimate,
-        Finished
+        New = 1,
+        Sended = 2,
+        Received = 3,
+        OnEstimate = 4,
+        Finished = 5
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace Insurance.Domain.Models
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace Insurance.Domain.Models
 {
     public class QuotationBroker
     {
@@ -13,5 +16,8 @@
         public int QuotationBrokerId { get; private set; }
         public virtual Quotation Quotation { get; private set; }
         public virtual BrokerInsurance BrokerInsurance { get; private set; }
+
+        [IgnoreDataMember]
+        public ICollection<Estimate> Estimates { get; set; }
     }
 }

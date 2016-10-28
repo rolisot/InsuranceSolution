@@ -12,5 +12,6 @@ namespace Insurance.Domain.Services
         void Create(CalculateIntegration ci);
         void Update(CalculateIntegration ci);
         void PrepareQuotationsToCalculate();
+        void CalculateQuotations();
     }
 }

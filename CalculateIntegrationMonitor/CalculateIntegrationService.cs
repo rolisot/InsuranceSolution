@@ -2,7 +2,11 @@
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
 using Insurance.Domain.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CalculateIntegrationMonitor
 {
@@ -53,18 +57,123 @@ namespace CalculateIntegrationMonitor
         {
             List<Quotation> quotations = this.quotationRepository.GetByStatus(QuotationStatusType.WaitCalculate);
 
-            if (quotations != null)
+            if (quotations.Count > 0)
             {
                 foreach (Quotation quotation in quotations)
                 {
                     foreach (QuotationBroker qb in quotation.QuotationBroker)
                     {
-                        CalculateIntegration ci = new CalculateIntegration(quotation, qb.BrokerInsurance.Broker,"XML");
+                        //TO DO -> Precisa montar o XML que será enviado ao multicálculo para inserir nesse momento
+                        string xml = GetXmlFromQuotationBroker(qb);
+                        CalculateIntegration ci = new CalculateIntegration(quotation, qb.BrokerInsurance.Broker, xml);
                         this.repository.Create(ci);
                     }
 
                     quotation.SetProcessingCalculateStatus();
                     this.quotationRepository.Update(quotation);
+                }
+            }
+        }
+
+        private static string GetXmlFromQuotationBroker(QuotationBroker qb)
+        {
+            StringWriter sw = new StringWriter();
+            XmlTextWriter tw = null;
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(qb.GetType());
+                tw = new XmlTextWriter(sw);
+                serializer.Serialize(tw, qb);
+            }
+            catch (Exception ex)
+            {
+                //Handle Exception Code
+            }
+            finally
+            {
+                sw.Close();
+                if (tw != null)
+                {
+                    tw.Close();
+                }
+            }
+            return sw.ToString();
+        }
+
+
+        public static Estimate GetEstimateFromXML(string xml)
+        {
+            StringReader strReader = null;
+            XmlSerializer serializer = null;
+            XmlTextReader xmlReader = null;
+            Object obj = null;
+            try
+            {
+                strReader = new StringReader(xml);
+                serializer = new XmlSerializer(typeof(Estimate));
+                xmlReader = new XmlTextReader(strReader);
+                obj = serializer.Deserialize(xmlReader);
+            }
+            catch (Exception exp)
+            {
+                //Handle Exception Code
+            }
+            finally
+            {
+                if (xmlReader != null)
+                {
+                    xmlReader.Close();
+                }
+                if (strReader != null)
+                {
+                    strReader.Close();
+                }
+            }
+            return (Estimate) obj;
+        }
+
+        public void CalculateQuotations()
+        {
+            List<CalculateIntegration> list = this.repository.GetAllNew();
+
+            if (list.Count > 0)
+            {
+                foreach (CalculateIntegration calculate in list)
+                {
+                    calculate.SetToSended();
+                    this.repository.Update(calculate);
+
+                    //TO DO -> Aqui vai chamar o serviço de multicálculo, passando o XML
+                    string returnText = "XML de Retorno";
+
+                    if (returnText != null)
+                    {
+                        calculate.SetToReceived(returnText);
+                        this.repository.Update(calculate);
+                    }
+                }
+            }
+        }
+
+        public void GenerateEstimates()
+        {
+            List<CalculateIntegration> list = this.repository.GetAllReceived();
+
+            if (list.Count > 0)
+            {
+                foreach (CalculateIntegration calculate in list)
+                {
+                    calculate.SetToOnEstimate();
+                    this.repository.Update(calculate);
+
+                    //TO DO -> Aqui vai ler o XML de retorno e inserir o registro na Estimate
+                    string returnText = "XML de Retorno";
+
+                    if (returnText != null)
+                    {
+                        calculate.SetToFinished();
+                        this.repository.Update(calculate);
+                    }
                 }
             }
         }
