@@ -27,7 +27,7 @@ namespace Insurance.Infraestructure.Repositories
 
             context.Database.ExecuteSqlCommand(@"
                 INSERT INTO CalculateIntegration 
-                (QuotationId,BrokerId,SendDate,SendText,Status)VALUES
+                (QuotationId,BrokerId,SendText,Status)VALUES
                 (@QuotationId, @BrokerId, @SendText, @Status)",
                 parameters);
         }

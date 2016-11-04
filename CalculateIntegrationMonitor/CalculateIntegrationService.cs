@@ -15,11 +15,15 @@ namespace CalculateIntegrationMonitor
 
         private ICalculateIntegrationRepository repository;
         private IQuotationRepository quotationRepository;
+        private IEstimateRepository estimateRepository;
 
-        public CalculateIntegrationService(ICalculateIntegrationRepository context, IQuotationRepository quotationContext)
+        public CalculateIntegrationService(ICalculateIntegrationRepository context, 
+            IQuotationRepository quotationContext,
+            IEstimateRepository estimateContext)
         {
             this.repository = context;
             this.quotationRepository = quotationContext;
+            this.estimateRepository = estimateContext;
         }
 
         public void Create(CalculateIntegration ci)
@@ -31,6 +35,7 @@ namespace CalculateIntegrationMonitor
         {
             this.repository.Dispose();
             this.quotationRepository.Dispose();
+            this.estimateRepository.Dispose();
         }
 
         public List<CalculateIntegration> GetAllNew()
@@ -106,13 +111,13 @@ namespace CalculateIntegrationMonitor
             StringReader strReader = null;
             XmlSerializer serializer = null;
             XmlTextReader xmlReader = null;
-            Object obj = null;
+            Estimate obj = null;
             try
             {
                 strReader = new StringReader(xml);
                 serializer = new XmlSerializer(typeof(Estimate));
                 xmlReader = new XmlTextReader(strReader);
-                obj = serializer.Deserialize(xmlReader);
+                obj = (Estimate) serializer.Deserialize(xmlReader);
             }
             catch (Exception exp)
             {
@@ -129,7 +134,7 @@ namespace CalculateIntegrationMonitor
                     strReader.Close();
                 }
             }
-            return (Estimate) obj;
+            return  obj;
         }
 
         public void CalculateQuotations()
@@ -144,7 +149,7 @@ namespace CalculateIntegrationMonitor
                     this.repository.Update(calculate);
 
                     //TO DO -> Aqui vai chamar o serviço de multicálculo, passando o XML
-                    string returnText = "XML de Retorno";
+                    string returnText = GetXmlFromCalculateIntegragion();
 
                     if (returnText != null)
                     {
@@ -166,16 +171,30 @@ namespace CalculateIntegrationMonitor
                     calculate.SetToOnEstimate();
                     this.repository.Update(calculate);
 
-                    //TO DO -> Aqui vai ler o XML de retorno e inserir o registro na Estimate
-                    string returnText = "XML de Retorno";
-
-                    if (returnText != null)
+                    try
                     {
-                        calculate.SetToFinished();
-                        this.repository.Update(calculate);
+                        //TO DO -> Aqui vai ler o XML de retorno e inserir o registro na Estimate
+                        Estimate estimate = GetEstimateFromXML(calculate.ReceiveText);
+
+                        if (estimate != null)
+                        {
+                            estimateRepository.Create(estimate);
+                            calculate.SetToFinished();
+                            this.repository.Update(calculate);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        int i = 0;
                     }
                 }
             }
+        }
+
+
+        public static string GetXmlFromCalculateIntegragion()
+        {
+            return @"<Estimate price=""500.00"" status=""New"" quotationbrokerid=""372"" />";
         }
     }
 }

@@ -18,6 +18,9 @@ namespace CalculateIntegrationMonitor
             Bind<ICalculateIntegrationRepository>()
                 .To<CalculateIntegrationRepository>().InSingletonScope();
 
+            Bind<IEstimateRepository>()
+               .To<EstimateRepository>().InSingletonScope();
+
             //Bind<IBrokerInsuranceRepository>()
             //   .To<BrokerInsuranceRepository>().InSingletonScope();
         }

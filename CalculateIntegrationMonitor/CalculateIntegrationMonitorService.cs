@@ -42,6 +42,7 @@ namespace CalculateIntegrationMonitor
                 {
                     service.PrepareQuotationsToCalculate();
                     service.CalculateQuotations();
+                    service.GenerateEstimates();
                 }
                 finally
                 {
