@@ -87,6 +87,7 @@
     <Compile Include="Repositories\ISecurityRepository.cs" />
     <Compile Include="Repositories\IStateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Serialization\EstimateSerialization.cs" />
     <Compile Include="Services\IBrokerInsuranceService.cs" />
     <Compile Include="Services\IBrokerService.cs" />
     <Compile Include="Services\ICalculateIntegrationService.cs" />

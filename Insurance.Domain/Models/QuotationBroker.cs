@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Insurance.Domain.Models
 {
-    [System.Xml.Serialization.XmlType("quotationbroker", IncludeInSchema = true)]
+    [XmlType("quotationbroker", IncludeInSchema = true)]
     public class QuotationBroker
     {
         public QuotationBroker(){}

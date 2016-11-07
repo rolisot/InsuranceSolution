@@ -1,6 +1,7 @@
 ﻿using Insurance.Domain.Enumerators;
 using Insurance.Domain.Models;
 using Insurance.Domain.Repositories;
+using Insurance.Domain.Serialization;
 using Insurance.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -106,37 +107,6 @@ namespace CalculateIntegrationMonitor
         }
 
 
-        public static Estimate GetEstimateFromXML(string xml)
-        {
-            StringReader strReader = null;
-            XmlSerializer serializer = null;
-            XmlTextReader xmlReader = null;
-            Estimate obj = null;
-            try
-            {
-                strReader = new StringReader(xml);
-                serializer = new XmlSerializer(typeof(Estimate));
-                xmlReader = new XmlTextReader(strReader);
-                obj = (Estimate) serializer.Deserialize(xmlReader);
-            }
-            catch (Exception exp)
-            {
-                //Handle Exception Code
-            }
-            finally
-            {
-                if (xmlReader != null)
-                {
-                    xmlReader.Close();
-                }
-                if (strReader != null)
-                {
-                    strReader.Close();
-                }
-            }
-            return  obj;
-        }
-
         public void CalculateQuotations()
         {
             List<CalculateIntegration> list = this.repository.GetAllNew();
@@ -174,13 +144,17 @@ namespace CalculateIntegrationMonitor
                     try
                     {
                         //TO DO -> Aqui vai ler o XML de retorno e inserir o registro na Estimate
-                        Estimate estimate = GetEstimateFromXML(calculate.ReceiveText);
+                        EstimateSerialization serialization = EstimateSerialization.FromXmlString(calculate.ReceiveText);
 
-                        if (estimate != null)
+                        
+                        if (serialization != null)
                         {
-                            estimateRepository.Create(estimate);
-                            calculate.SetToFinished();
-                            this.repository.Update(calculate);
+                            foreach (Estimate estimate in serialization.Estimates)
+                            {
+                                estimateRepository.Create(estimate);
+                                calculate.SetToFinished();
+                                this.repository.Update(calculate);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -194,7 +168,12 @@ namespace CalculateIntegrationMonitor
 
         public static string GetXmlFromCalculateIntegragion()
         {
-            return @"<Estimate price=""500.00"" status=""New"" quotationbrokerid=""372"" />";
+            return @"<EstimateSerialization>
+  <Estimates>
+    <Estimate price=""500.00"" status=""New"" />
+    <Estimate price=""600.00"" status=""New"" />
+  </Estimates>
+</EstimateSerialization>";
         }
     }
 }
