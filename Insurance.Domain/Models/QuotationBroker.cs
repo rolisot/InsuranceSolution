@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace Insurance.Domain.Models
 {
-    [XmlType("quotationbroker", IncludeInSchema = true)]
     public class QuotationBroker
     {
         public QuotationBroker(){}
@@ -15,13 +15,16 @@ namespace Insurance.Domain.Models
             this.BrokerInsurance = brokerInsurance;
         }
 
-        public int QuotationBrokerId { get; set; }
-        [XmlIgnore]
+        public int QuotationBrokerId { get; private set; }
         public virtual Quotation Quotation { get; private set; }
-        [XmlIgnore]
         public virtual BrokerInsurance BrokerInsurance { get; private set; }
 
-        [IgnoreDataMember]
+        [NotMapped]
+        public virtual int BrokerId { get { return this.BrokerInsurance.Broker.BrokerId; } }
+
+        [NotMapped]
+        public virtual byte InsuranceId { get { return this.BrokerInsurance.Insurance.InsuranceId; } }
+
         [XmlIgnore]
         public ICollection<Estimate> Estimates { get; set; }
     }

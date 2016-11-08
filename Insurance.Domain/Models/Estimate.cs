@@ -7,7 +7,7 @@ namespace Insurance.Domain.Models
 {
     public class Estimate
     {
-        private int quotationBrokerSetterId;
+        //private int quotationBrokerSetterId;
 
         public Estimate()
         {
@@ -29,16 +29,16 @@ namespace Insurance.Domain.Models
         [XmlAttribute("status")]
         public EstimateStatusType Status { get; set; }
 
-        [XmlAttribute("quotationbrokerid")]
-        [IgnoreDataMember]
-        public int QuotationBrokerSetterId
-        {
-            get { return this.quotationBrokerSetterId; }
-            set {
-                this.quotationBrokerSetterId = value;
-                this.QuotationBroker.QuotationBrokerId = this.quotationBrokerSetterId;
-            }
-        }
+        //[XmlAttribute("quotationbrokerid")]
+        //[IgnoreDataMember]
+        //public int QuotationBrokerSetterId
+        //{
+        //    get { return this.quotationBrokerSetterId; }
+        //    set {
+        //        this.quotationBrokerSetterId = value;
+        //        this.QuotationBroker.QuotationBrokerId = this.quotationBrokerSetterId;
+        //    }
+        //}
 
         public virtual QuotationBroker QuotationBroker { get; set; }
 

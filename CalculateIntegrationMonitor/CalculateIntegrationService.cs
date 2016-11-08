@@ -67,13 +67,15 @@ namespace CalculateIntegrationMonitor
             {
                 foreach (Quotation quotation in quotations)
                 {
-                    foreach (QuotationBroker qb in quotation.QuotationBroker)
-                    {
-                        //TO DO -> Precisa montar o XML que será enviado ao multicálculo para inserir nesse momento
-                        string xml = GetXmlFromQuotationBroker(qb);
-                        CalculateIntegration ci = new CalculateIntegration(quotation, qb.BrokerInsurance.Broker, xml);
-                        this.repository.Create(ci);
-                    }
+                    BrokerQuotation bq = new BrokerQuotation(quotation);
+                    string xml = bq.GetXml();
+                    //foreach (QuotationBroker qb in quotation.QuotationBroker)
+                    //{
+                    //    //TO DO -> Precisa montar o XML que será enviado ao multicálculo para inserir nesse momento
+                    //    string xml = GetXmlFromQuotationBroker(qb);
+                    //    CalculateIntegration ci = new CalculateIntegration(quotation, qb.BrokerInsurance.Broker, xml);
+                    //    this.repository.Create(ci);
+                    //}
 
                     quotation.SetProcessingCalculateStatus();
                     this.quotationRepository.Update(quotation);
